@@ -1,4 +1,5 @@
 import pandas as pd
+import time
 
 import torch
 import torch.nn as nn
@@ -11,6 +12,15 @@ from transformer import Transformer
 from stream_dataset import StreamDataset
 
 # ===== MODEL CONFIGURATION =====
+# NUM_ENCODERS = 0
+# NUM_DECODERS = 2
+# D_MODEL = 32
+# NUM_HEADS = 2
+# D_FF = 256
+# OUTPUT_VACABULARY_SIZE = 393528
+# TARGET_VACABULARY_SIZE = 393528
+# SEQ_LEN = 4
+
 NUM_ENCODERS = 0
 NUM_DECODERS = 2
 D_MODEL = 512
@@ -73,7 +83,10 @@ train_losses, val_losses = [], []
 for epoch in range(EPOCHS):
     transformer.train()
 
+    start_time = time.time()
+
     running_loss = 0.0
+    num_batches = 0
     correct = 0
     total = 0
 
@@ -90,12 +103,13 @@ for epoch in range(EPOCHS):
         loss.backward()
         optimizer.step()
         running_loss += loss.item() * label.size(0)
+        num_batches += 1
         
         preds = output.argmax(dim=-1)
         correct += (preds == label).sum().item()
         total += label.numel()
 
-    train_loss = running_loss / len(loader.dataset)
+    train_loss = running_loss / num_batches
     train_losses.append(train_loss)
 
     train_aссuracy = correct / total
@@ -105,6 +119,9 @@ for epoch in range(EPOCHS):
     # Validation 
     transformer.eval()
     running_loss = 0.0
+    num_batches = 0
+    correct = 0
+    total = 0
     with torch.no_grad():
         for input, label in loader:
             
@@ -115,12 +132,13 @@ for epoch in range(EPOCHS):
                 label.reshape(-1)
             )
             running_loss += loss.item() * label.size(0)
+            num_batches += 1
 
             preds = output.argmax(dim=-1)
             correct += (preds == label).sum().item()
             total += label.numel()
 
-    val_loss = running_loss / len(loader.dataset)
+    val_loss = running_loss / num_batches
     val_losses.append(val_loss)
 
     val_aссuracy = correct / total
@@ -128,7 +146,9 @@ for epoch in range(EPOCHS):
 
     print(
         f"Epoch {epoch+1}/{EPOCHS} | "
+        f"time: {start_time - time.time()} ms | "
         f"Train loss: {train_loss:.4f}, acc: {train_aссuracy:.4f} | "
         f"Val loss: {val_loss:.4f}, acc: {val_aссuracy:.4f}"
+
     )
 

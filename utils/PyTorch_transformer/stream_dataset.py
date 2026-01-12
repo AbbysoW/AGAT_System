@@ -38,8 +38,7 @@ class StreamDataset(IterableDataset):
             yield {
                 "decoder_input": torch.from_numpy(x).to(self.dtype).to(self.device),
                 "attention_mask": self.attention_mask,
-                "decoder_padding_mask": (torch.rand(self.seq_len) > 0.2).int().to(self.device)
-            }, torch.from_numpy(y).to(self.dtype)
+            }, torch.from_numpy(y).to(self.dtype).to(self.device)
 
     
 

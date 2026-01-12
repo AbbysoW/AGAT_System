@@ -91,8 +91,6 @@ class MultiHeadAttention(nn.Module):
 
         # Apply mask (if provided) by adding large negative values to masked positions
         if mask is not None:
-            print('scaled_logits', scaled_logits.shape)
-            print('mask', mask.shape)
             scaled_logits += (mask * -1e9)
 
         # Apply softmax to get attention probabilities
