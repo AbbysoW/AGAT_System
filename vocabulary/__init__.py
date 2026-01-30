@@ -1,5 +1,5 @@
 import json
 import pickle as  pkl
 
-with open('vocab.pkl', 'rb') as vocab:
+with open('vocabulary/vocab10.pkl', 'rb') as vocab:
     vocabulary = pkl.load(vocab)

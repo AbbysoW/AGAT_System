@@ -22,10 +22,11 @@ class MultiHeadAttention(nn.Module):
         num_heads: Number of attention heads
     """
     
-    def __init__(self, d_model: int, num_heads: int):
+    def __init__(self, d_model:int, num_heads:int, block_size:int = 128):
         super().__init__()
         self.num_heads = num_heads
         self.d_model = d_model
+        self.block_size = block_size
         
         # Ensure d_model is divisible by num_heads
         assert d_model % num_heads == 0
@@ -62,44 +63,26 @@ class MultiHeadAttention(nn.Module):
 
         # Transpose: (batch_size, seq_len, num_heads, depth) -> (batch_size, num_heads, seq_len, depth)
         return x.permute(0, 2, 1, 3)
+    
+    def flash_attention_step(self, qi, kj, vj, o, m, l, mask_block=None): 
+        matrix_mult = torch.matmul(qi, kj.transpose(-2, -1))
+        # d_k = torch.tensor(self.depth, dtype=q.dtype, device=q.device)
+        scaled_logits = matrix_mult / torch.sqrt(self.depth)
 
-    def dot_product_attention(self, q, k, v, mask=None):
-        """
-        Computes scaled dot-product attention.
-        
-        This calculates how much each word in a sequence should "attend to" every other word.
-        The attention weights determine which parts of the input are most relevant.
-        
-        Args:
-            q: Query matrix of shape (..., seq_len_q, depth)
-            k: Key matrix of shape (..., seq_len_k, depth)
-            v: Value matrix of shape (..., seq_len_v, depth)
-            mask: Optional mask to prevent attention to certain positions
-            
-        Returns:
-            output: Attention-weighted values
-            attention_weights: Attention probability distribution
-            
-        Formula: Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) * V
-        """
-        # Calculate attention scores: Q * K^T
-        matrix_mult = torch.matmul(q, k.transpose(-2, -1))
-        
-        # Scale by square root of key dimension (prevents softmax saturation)
-        d_k = torch.tensor(k.size(-1), device=k.device, dtype=torch.float32)
-        scaled_logits = matrix_mult / torch.sqrt(d_k)
+        if mask_block is not None:
+            scaled_logits += (mask_block * -1e9)
 
-        # Apply mask (if provided) by adding large negative values to masked positions
-        if mask is not None:
-            scaled_logits += (mask * -1e9)
+        max_s = scaled_logits.max(dim=-1).values
+        m_new = torch.maximum(m, max_s)
 
-        # Apply softmax to get attention probabilities
-        attention_weights = fun.softmax(scaled_logits, dim=-1)
-        
-        # Apply attention weights to values
-        output = torch.matmul(attention_weights, v)
+        exp_scale_old = torch.exp(m - m_new)
+        exp_scale_new = torch.exp(scaled_logits - m_new.unsqueeze(-1))
 
-        return output, attention_weights
+        l = l * exp_scale_old + exp_scale_new.sum(dim=-1)
+        o = o * exp_scale_old.unsqueeze(-1) + torch.matmul(exp_scale_new, vj)
+
+        return o, m_new, l
+    
 
     def forward(self, q, k, v, mask=None):
         """
@@ -115,6 +98,7 @@ class MultiHeadAttention(nn.Module):
             Output after multi-head attention and linear projection
         """
         batch_size = q.size(0)
+        seq_len = q.size(1)
 
         if logger_attention.isEnabledFor(logging.DEBUG):
             logger_attention.debug("      MHA: Q=%s, K=%s, V=%s", 
@@ -132,18 +116,28 @@ class MultiHeadAttention(nn.Module):
         k = self.split_heads(k, batch_size)
         v = self.split_heads(v, batch_size)
 
-        # Apply attention function
-        scaled_attention, attention_weights = self.dot_product_attention(q, k, v, mask)
+        o = torch.zeros([batch_size, self.num_heads, seq_len, self.depth], dtype=q.dtype, device=q.device)
+        m = torch.full([batch_size, self.num_heads, seq_len], -1e9, dtype=q.dtype, device=q.device)
+        l = torch.zeros([batch_size, self.num_heads, seq_len], dtype=q.dtype, device=q.device)
+
+        #for loop
+        for i in range(0, seq_len, self.block_size):
+            qi = q[:, :, i:i+self.block_size, :]
+            for j in range(0, seq_len, self.block_size):
+                kj = k[:, :, j:j+self.block_size, :]
+                vj = v[:, :, j:j+self.block_size, :]
+
+                if mask is not None:
+                    mask_block = mask[:, :, j:j+self.block_size].unsqueeze(1)
+                else:
+                    mask_block = None
+
+                o, m, l = self.flash_attention_step(qi, kj, vj, o, m, l, mask_block)
+
+        scaled_attention = o / l.unsqueeze(-1)
 
         if logger_attention.isEnabledFor(logging.DEBUG):
-            # Average attention weight for all heads
-            mean_attention = attention_weights.mean().item()
-            logger_attention.debug(
-                "      Attention weights: mean=%.4f, shape=%s",
-                mean_attention,
-                tuple(attention_weights.shape)
-            )   
-
+            pass
         # Transpose back: (batch_size, num_heads, seq_len, depth) -> (batch_size, seq_len, num_heads, depth)
         scaled_attention = scaled_attention.permute(0, 2, 1, 3)
         

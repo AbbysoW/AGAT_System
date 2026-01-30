@@ -1,27 +1,59 @@
-import chat
-import rag
-# from stt import 
+from multiprocessing import Process
+import uvicorn
 
-from data_processing import preprocess, seq_to_ids, ids_to_seq, make_padding_mask
-from vocabulary import vocabulary
+from logger import setup_logging, setup_uvicorn_logging
 
-# Из STT получить 
-request = ''
-request_tokens = preprocess()
-request_tokens = seq_to_ids(request_tokens, vocabulary)
+def chat():
+    setup_logging()
+    setup_uvicorn_logging()
+    uvicorn.run(
+        "chat.chat:app", 
+        host="127.0.0.1", 
+        port=8000, 
+        reload=False, 
+        log_config=None, 
+        access_log=False
+        )
 
-# Из RAG получить TEXT
-info = ''
-info_tokens = preprocess()
-info_tokens = seq_to_ids(info_tokens, vocabulary)
+def rag():
+    setup_logging()
+    setup_uvicorn_logging()
+    uvicorn.run(
+        "rag.data_search:app", 
+        host="127.0.0.1", 
+        port=8001, 
+        reload=False, 
+        log_config=None, 
+        access_log=False
+        )
+
+def chat_model():
+    setup_logging()
+    setup_uvicorn_logging()
+    uvicorn.run(
+        "models.chat_model.chat_model:app", 
+        host="127.0.0.1", 
+        port=8002, 
+        reload=False, 
+        log_config=None, 
+        access_log=False
+        )
 
 
-context = ''
-context_tokens = preprocess(context)
-context_tokens = seq_to_ids(context_tokens, vocabulary)
+if __name__ == "__main__":
+    # Создаем процессы для каждого сервиса
+    p1 = Process(target=chat)
+    p2 = Process(target=rag)
+    p3 = Process(target=chat_model)
 
-seq = context_tokens + info_tokens + request_tokens
+    # Запускаем их параллельно
+    p1.start()
+    p2.start()
+    p3.start()
 
-padding  = make_padding_mask(seq, chat.model.seq_len)
+    print("test  point")
 
-y = chat.model()
+    # Ждем завершения (это обычно будет бесконечно, пока сервисы работают)
+    p1.join()
+    p2.join()
+    p3.join()

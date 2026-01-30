@@ -4,6 +4,7 @@ import torch
 from torch import nn
 from torch.nn import Linear
 from torch.nn import functional as fun
+import torch.nn.functional as F
 
 
 logger_init = logging.getLogger(f"{__name__}.init")  # Logger for initialization
@@ -63,44 +64,6 @@ class MultiHeadAttention(nn.Module):
         # Transpose: (batch_size, seq_len, num_heads, depth) -> (batch_size, num_heads, seq_len, depth)
         return x.permute(0, 2, 1, 3)
 
-    def dot_product_attention(self, q, k, v, mask=None):
-        """
-        Computes scaled dot-product attention.
-        
-        This calculates how much each word in a sequence should "attend to" every other word.
-        The attention weights determine which parts of the input are most relevant.
-        
-        Args:
-            q: Query matrix of shape (..., seq_len_q, depth)
-            k: Key matrix of shape (..., seq_len_k, depth)
-            v: Value matrix of shape (..., seq_len_v, depth)
-            mask: Optional mask to prevent attention to certain positions
-            
-        Returns:
-            output: Attention-weighted values
-            attention_weights: Attention probability distribution
-            
-        Formula: Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) * V
-        """
-        # Calculate attention scores: Q * K^T
-        matrix_mult = torch.matmul(q, k.transpose(-2, -1))
-        
-        # Scale by square root of key dimension (prevents softmax saturation)
-        d_k = torch.tensor(k.size(-1), device=k.device, dtype=torch.float32)
-        scaled_logits = matrix_mult / torch.sqrt(d_k)
-
-        # Apply mask (if provided) by adding large negative values to masked positions
-        if mask is not None:
-            scaled_logits += (mask * -1e9)
-
-        # Apply softmax to get attention probabilities
-        attention_weights = fun.softmax(scaled_logits, dim=-1)
-        
-        # Apply attention weights to values
-        output = torch.matmul(attention_weights, v)
-
-        return output, attention_weights
-
     def forward(self, q, k, v, mask=None):
         """
         Forward pass of multi-head attention.
@@ -133,19 +96,13 @@ class MultiHeadAttention(nn.Module):
         v = self.split_heads(v, batch_size)
 
         # Apply attention function
-        scaled_attention, attention_weights = self.dot_product_attention(q, k, v, mask)
-
-        if logger_attention.isEnabledFor(logging.DEBUG):
-            # Average attention weight for all heads
-            mean_attention = attention_weights.mean().item()
-            logger_attention.debug(
-                "      Attention weights: mean=%.4f, shape=%s",
-                mean_attention,
-                tuple(attention_weights.shape)
-            )   
+        out = F.scaled_dot_product_attention(
+            q, k, v,
+            mask
+        )   
 
         # Transpose back: (batch_size, num_heads, seq_len, depth) -> (batch_size, seq_len, num_heads, depth)
-        scaled_attention = scaled_attention.permute(0, 2, 1, 3)
+        scaled_attention = out.permute(0, 2, 1, 3)
         
         # Concatenate heads: (batch_size, seq_len, num_heads, depth) -> (batch_size, seq_len, d_model)
         concat_attention = scaled_attention.reshape(batch_size, -1, self.d_model)

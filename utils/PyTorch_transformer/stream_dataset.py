@@ -3,21 +3,22 @@ import torch
 from torch.utils.data import IterableDataset, get_worker_info
 
 class StreamDataset(IterableDataset):
-    def __init__(self, data, seq_len: int, attention_mask, stride: int = 1, dtype=torch.long, drop_last: bool = True, device='cpu'):
+    def __init__(self, data, seq_len: int, attention_mask=None, stride: int = 1, split:float=None, is_val=False,  dtype=torch.long, device='cpu'):
         self.data = data
         self.seq_len = seq_len
         self.attention_mask = attention_mask
         self.stride = stride
         self.dtype = dtype
-        self.drop_last = drop_last
         self.device = device
+        self.split = split
+        self.is_val = is_val
 
     def _get_range(self):
         total_len = len(self.data) - self.seq_len - 1
 
         worker = get_worker_info()
         if worker is None:
-            return self.data, 0, total_len
+            return 0, total_len
 
         per_worker = total_len // worker.num_workers
         start = worker.id * per_worker
@@ -26,10 +27,18 @@ class StreamDataset(IterableDataset):
         if worker.id == worker.num_workers - 1:
             end = total_len
 
-        return self.data, start, end
+        return start, end
 
     def __iter__(self):
-        self.data, start, end = self._get_range()
+        start, end = self._get_range()
+
+        if self.split:
+            split_point = int(end * self.split)
+
+        if self.is_val:
+            start, end = split_point, end
+        else:
+            start, end = start, split_point
 
         for idx in range(start, end, self.stride):
             x = self.data[idx : idx + self.seq_len]
@@ -38,8 +47,7 @@ class StreamDataset(IterableDataset):
             yield {
                 "decoder_input": torch.from_numpy(x).to(self.dtype).to(self.device),
                 "attention_mask": self.attention_mask,
-                "decoder_padding_mask": (torch.rand(self.seq_len) > 0.2).int().to(self.device)
-            }, torch.from_numpy(y).to(self.dtype)
+            }, torch.from_numpy(y).to(self.dtype).to(self.device)
 
     
 

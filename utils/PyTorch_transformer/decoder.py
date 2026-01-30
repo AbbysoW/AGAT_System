@@ -4,7 +4,8 @@ import torch
 from torch import nn
 from torch.nn import LayerNorm, Dropout
 
-from dot_product_attention import MultiHeadAttention
+# from dot_product_attention import MultiHeadAttention
+from pytorch_attention import MultiHeadAttention
 from feedforward import Feedforward
 
 
@@ -83,7 +84,7 @@ class Decoder(nn.Module):
         inverted_universal_mask = None
         
         if attention_mask is not None and padding_mask is not None:
-            attention_mask = attention_mask.unsqueeze(0).unsqueeze(1)
+            attention_mask = attention_mask.unsqueeze(1)
             padding_mask = padding_mask.unsqueeze(1).unsqueeze(2)
             universal_mask = attention_mask * padding_mask
             inverted_universal_mask = 1 - universal_mask

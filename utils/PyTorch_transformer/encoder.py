@@ -4,7 +4,8 @@ import torch
 from torch import nn
 from torch.nn import LayerNorm, Dropout
 
-from dot_product_attention import MultiHeadAttention
+# from dot_product_attention import MultiHeadAttention
+from pytorch_attention import MultiHeadAttention
 from feedforward import Feedforward
 
 
@@ -71,8 +72,8 @@ class Encoder(nn.Module):
 
         # Invert padding mask for attention (attention expects 0 = valid, 1 = masked)
         if padding_mask is not None:
+            padding_mask = padding_mask.unsqueeze(1).unsqueeze(2)
             inverted_padding_mask = 1 - padding_mask
-            inverted_padding_mask = inverted_padding_mask.unsqueeze(1).unsqueeze(2)
         else:
             inverted_padding_mask = None
 
