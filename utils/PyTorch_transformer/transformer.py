@@ -44,8 +44,8 @@ class Transformer(nn.Module):
     iteration_id = 0
 
     def __init__(self, num_encoder_layers: int, num_decoder_layers: int, d_model: int, num_heads: int, d_ff: int, 
-                 output_vocab_size: int, seq_len: int, dropout_rate: float = 0.1, input_vocab_size: int = None, 
-                 target_vocab_size: int = None, use_positional_encoding=True):
+                 output_vocab_size: int, seq_len: int, dropout_rate: float = 0.1, input_vocab_size: int | None = None, 
+                 target_vocab_size: int | None = None, use_positional_encoding=True):
         super().__init__()
 
         self.d_model = d_model

@@ -4,8 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 import httpx
 from pydantic import BaseModel
 
-from data_processing import preprocess, seq_to_ids, ids_to_seq, make_padding_mask
-from vocabulary import vocabulary
+# from data_processing import preprocess, seq_to_ids, ids_to_seq, make_padding_mask
+# from vocabulary import vocabulary
 
 app = FastAPI()
 app.add_middleware(

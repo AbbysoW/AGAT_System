@@ -1,9 +1,24 @@
-def fun1(func):
-    num = func()
-    return num + 5
+from multiprocessing import Process
+import uvicorn
 
-@fun1
-def fun2():
-    return 10 
+from logger import setup_logging, setup_uvicorn_logging
 
-print(fun2)  # This will print 15
+
+def stt():
+    setup_logging()
+    setup_uvicorn_logging()
+    uvicorn.run(
+        "stt.server:app", 
+        host="127.0.0.1", 
+        port=8003, 
+        reload=False, 
+        log_config=None, 
+        access_log=False
+        )
+    
+    
+if __name__ == "__main__":
+    p4 = Process(target=stt)
+    
+    p4.start()
+    p4.join()

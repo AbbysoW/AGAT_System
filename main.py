@@ -38,6 +38,18 @@ def chat_model():
         log_config=None, 
         access_log=False
         )
+    
+def stt():
+    setup_logging()
+    setup_uvicorn_logging()
+    uvicorn.run(
+        "stt.server:app", 
+        host="127.0.0.1", 
+        port=8003, 
+        reload=False, 
+        log_config=None, 
+        access_log=False
+        )
 
 
 if __name__ == "__main__":
@@ -45,11 +57,13 @@ if __name__ == "__main__":
     p1 = Process(target=chat)
     p2 = Process(target=rag)
     p3 = Process(target=chat_model)
+    p4 = Process(target=stt)
 
     # Запускаем их параллельно
     p1.start()
     p2.start()
     p3.start()
+    p4.start()
 
     print("test  point")
 
@@ -57,3 +71,4 @@ if __name__ == "__main__":
     p1.join()
     p2.join()
     p3.join()
+    p4.join()

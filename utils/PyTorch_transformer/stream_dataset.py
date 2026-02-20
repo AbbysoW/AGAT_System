@@ -3,7 +3,7 @@ import torch
 from torch.utils.data import IterableDataset, get_worker_info
 
 class StreamDataset(IterableDataset):
-    def __init__(self, data, seq_len: int, attention_mask=None, stride: int = 1, split:float=None, is_val=False,  dtype=torch.long, device='cpu'):
+    def __init__(self, data, seq_len: int, attention_mask=None, stride: int = 1, split:float | None = None, is_val=False,  dtype=torch.long, device='cpu'):
         self.data = data
         self.seq_len = seq_len
         self.attention_mask = attention_mask
@@ -54,7 +54,7 @@ class StreamDataset(IterableDataset):
 if __name__ == '__main__':
     from torch.utils.data import DataLoader
 
-    npy_path = 'E:\Documents\VS\Python\AGAT\AGAT_System\Traning data\DataSet.npy'
+    npy_path = 'E:/Documents/VS/Python/AGAT/AGAT_System/Traning data/DataSet.npy'
 
     data = np.load(npy_path, mmap_mode='r')
 

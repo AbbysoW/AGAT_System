@@ -71,7 +71,7 @@ optimizer = optim.Adam(transformer.parameters(), lr=1e-4)
 # ===== PREPARE TRAINING DATA =====
 # Model expects dictionary input with encoder_input and decoder_input
 
-npy_path = 'E:\Documents\VS\Python\AGAT\AGAT_System\Traning data\DataSet.npy'
+npy_path = 'E:/Documents/VS/Python/AGAT/AGAT_System/Traning data/DataSet.npy'
 
 data = np.load(npy_path, mmap_mode="r")
 
@@ -144,7 +144,7 @@ for epoch in range(EPOCHS):
             f"Epoch {epoch+1}/{EPOCHS} | "
             f"time: {batch_time} | "
             f"Train loss: {train_loss:.4f}, acc: {train_aссuracy:.4f}",
-            end="\r"
+            end="/r"
         )
 
     train_losses.append(train_loss)
@@ -183,7 +183,7 @@ for epoch in range(EPOCHS):
                 f"time: {batch_time} | "
                 f"Train loss: {train_loss:.4f}, acc: {train_aссuracy:.4f} | "
                 f"Val loss: {val_loss:.4f}, acc: {val_aссuracy:.4f}",
-                end="\r"
+                end="/r"
             )
 
     val_losses.append(val_loss)
