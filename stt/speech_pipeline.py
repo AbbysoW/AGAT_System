@@ -10,11 +10,11 @@ class Pipeline:
     def __init__(self):
         pass
     
-    def _get_speach_text(audio):
+    def _get_speach_text(self, audio):
         medium = Whisper("medium")
         return medium.get_text(audio)
     
-    def listen(self: bool = False):
+    def listen(self):
 
         while True:
             try:
