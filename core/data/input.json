@@ -1,0 +1,19 @@
+{
+  "modules_online": {
+    "stt": true,
+    "cv": true,
+    "sys": true
+  },
+  "input": {
+    "context": "",
+    "stt": "",
+    "cv": {
+        "text": "",
+        "objects": []
+    },
+    "sys": {
+        
+    }
+
+  }
+}
