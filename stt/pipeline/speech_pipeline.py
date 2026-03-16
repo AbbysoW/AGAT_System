@@ -3,7 +3,7 @@ from datetime import datetime
 from whisper_stt import Whisper
 from vad import VAD
 
-class Pipeline:
+class STT:
     vad = VAD()
     small = Whisper("small")
 
@@ -32,6 +32,6 @@ class Pipeline:
 
 if __name__ == "__main__":
 
-    pipeline = Pipeline()
+    pipeline = STT()
 
     print(pipeline.listen())

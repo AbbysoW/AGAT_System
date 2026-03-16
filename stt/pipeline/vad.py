@@ -25,7 +25,7 @@ class VAD:
             silence_time = 0
             speaking = False
 
-            print("listenong")
+            print("listening")
 
             while True:
                 data = self.q.get()
