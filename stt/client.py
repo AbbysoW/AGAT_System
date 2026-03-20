@@ -1,30 +1,48 @@
 import logging
 
-from fastapi import HTTPException
+from fastapi import FastAPI
 import httpx
-
 
 
 logger = logging.getLogger(__name__)
 
-CHAT_URL = "http://127.0.0.1:8000"
 
-# Block of API
-async def send_to_chat(text: str):
-    async with httpx.AsyncClient() as client:
-        try:
-            response = await client.post(
-                CHAT_URL + "", # new adress
-                json={
-                    "text": text
-                    }
-            )
+app = FastAPI()
 
-            return response
-        except httpx.HTTPError as e:
-            raise HTTPException(status_code=500, detail=str(e))
-        
+CORE_URL = "http://127.0.0.1:8000"
 
+# OUTPUT
+http_client = httpx.AsyncClient(
+    timeout=httpx.Timeout(10.0, connect=2.0),
+    limits=httpx.Limits(max_connections=10, max_keepalive_connections=5),
+    trust_env=False
+)
+
+async def send_to_core(text: str):
+    try:
+        response = await http_client.post(
+            f"{CORE_URL}/",  
+            json={
+                "text": text
+                }
+        )
+        response.raise_for_status()
+        return response.json()
+
+    except httpx.TimeoutException:
+        print("Core Service не ответил за 10 секунд (Таймаут)")
+    except httpx.HTTPStatusError as e:
+        print(f"Core Service вернул ошибку {e.response.status_code}: {e.response.text}")
+    except httpx.RequestError as e:
+        print(f"Ошибка сети при запросе к Core: {e}")
+    except Exception as e:
+        print("Непредвиденная ошибка при отправке в Core")
+    
+    return None
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    await http_client.aclose()
     
 
 

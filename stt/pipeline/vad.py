@@ -25,7 +25,7 @@ class VAD:
             silence_time = 0
             speaking = False
 
-            print("listening")
+            print("listening...")
 
             while True:
                 data = self.q.get()
@@ -36,12 +36,12 @@ class VAD:
                     speaking = True
                     silence_time = 0
                     recording.append(data)
-                    print("vol:", volume)
+                    # print("vol:", volume)
                 else:
                     if speaking:
                         silence_time += self.block_duration
                         recording.append(data)
-                        print("vol:", volume)
+                        # print("vol:", volume)
 
                         if silence_time >= self.silence_duration:
                             print("Speech ended")
