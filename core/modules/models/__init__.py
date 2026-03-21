@@ -1,2 +1,2 @@
-import filter_models
-import dispatcher_models
+from . import filter_models
+from . import dispatcher_models

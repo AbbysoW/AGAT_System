@@ -1,6 +1,6 @@
 import json
 
-from models.filter_models import KeepSilent, IsImportant
+from .models.filter_models import KeepSilent, IsImportant
 
 
 class Filter:
@@ -21,6 +21,7 @@ class Filter:
         return False
         
     def _should_keep_silent(self, input: str) -> bool:
+        return
         y = self.reveree.keep_silent.filter(input)
 
         if y > 0.8:
@@ -28,6 +29,7 @@ class Filter:
         return False
     
     def _is_important(self, input: str) -> bool:
+        return True
         y = self.reveree.is_important.filter(input)
 
         if max(y) > 0.8:

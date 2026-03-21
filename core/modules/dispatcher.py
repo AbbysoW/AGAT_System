@@ -2,7 +2,7 @@ from threading import Thread
 import asyncio
 
 from ..client import send_rag, send_math, send_console
-from models.dispatcher_models import NeedConsole, NeedMath
+from .models.dispatcher_models import NeedConsole, NeedMath
 
 
 class Dispatcher:
@@ -25,9 +25,13 @@ class Dispatcher:
 
         for thread in threads:
             thread.start()
+            thread.join()
+
+        return results
 
     # client functions
     def _send_rag(self, text: str, results: dict):
+        return
         result = asyncio.run(send_rag(text))
 
         results['rag'] = result
@@ -44,6 +48,7 @@ class Dispatcher:
     
     # filter functions
     def _need_math(self, text: str) -> bool:
+        return
         y = self.need_math.filter(text)
 
         if y > 0.8:
@@ -51,6 +56,7 @@ class Dispatcher:
         return False
 
     def _need_console(self, text: str) -> bool:
+        return
         y = self.need_math.filter(text)
 
         if y > 0.8:

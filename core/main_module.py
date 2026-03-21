@@ -1,7 +1,7 @@
-from modules.filter import Filter
-from modules.dispatcher import Dispatcher
-from modules.pre_process import PreProcess
-from client import send_request
+from .modules.filter import Filter
+from .modules.dispatcher import Dispatcher
+from .modules.pre_process import PreProcess
+from .client import send_request
 
 
 
@@ -49,3 +49,14 @@ class Core:
             ext_inf = self.dispatcher.get_ext_inf(self.data['input'])
 
             final_input = self.pre_process.process(self.data['input'], ext_inf)
+
+            print(final_input)
+
+
+
+
+if __name__ == '__main__':
+
+    core = Core()
+
+    core.add_stt_input("test stt input")
