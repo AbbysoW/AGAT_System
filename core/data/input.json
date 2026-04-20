@@ -8,12 +8,9 @@
     "context": "",
     "stt": "",
     "cv": {
-        "text": "",
-        "objects": []
+      "text": "",
+      "objects": []
     },
-    "sys": {
-        
-    }
-
+    "sys": {}
   }
 }

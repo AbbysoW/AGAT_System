@@ -18,13 +18,15 @@ http_client = httpx.AsyncClient(
     trust_env=False
 )
 
-async def send_to_core(text: str):
+async def send_to_core(speach_info: dict):
     try:
         response = await http_client.post(
-            f"{CORE_URL}/",  
+            f"{CORE_URL}/core/stt",  
             json={
-                "text": text
-                }
+                "text": speach_info['text'],
+                "language": speach_info['language'],
+                "speaker": speach_info['speaker']
+            }
         )
         response.raise_for_status()
         return response.json()

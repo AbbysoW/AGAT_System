@@ -1,10 +1,11 @@
+# 8004
 import asyncio
 
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 
-from pipeline import STT
-from client import send_to_core
+from .pipeline import STT
+from .client import send_to_core
 
 stt = STT()
 
@@ -13,12 +14,9 @@ async def stt_worker():
     print("STT Worker запущен...")
     while True:
         try:
-            text = await asyncio.to_thread(stt.listen)
-            print('got text')
+            speach_info = await asyncio.to_thread(stt.listen)
             
-            if text:
-                print('send')
-                await send_to_core(text)
+            await send_to_core(speach_info)
                 
         except Exception as e:
             print(f"Ошибка в цикле STT: {e}")

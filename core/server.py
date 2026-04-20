@@ -1,27 +1,37 @@
+# 8000
 from  fastapi import FastAPI, BackgroundTasks
 import httpx
 
-import main_module
+from pydantic import BaseModel
+
+from .main_module import Core
+
 
 
 app = FastAPI()
 
-# =INPUT=
+# INPUT
+core = Core()
+
 
 # peripheral
-app.post("/core/stt")
+class STT_INPUT(BaseModel):
+    text: str
+    language: str
+    speaker: str
+@app.post("/core/stt")
+def add_speach(speach_info: STT_INPUT):
+    core.add_stt_input(speach_info.text, speach_info.speaker, speach_info.language)
+
+@app.post("/core/cv")
 def add_speach():
     pass
 
-app.post("/core/cv")
-def add_speach():
-    pass
-
-app.post("/core/system_info")
+@app.post("/core/system_info")
 def add_speach():
     pass
 
 # chat model
-app.post("/core/post_process/text")
+@app.post("/core/post_process/text")
 def add_speach():
     pass
