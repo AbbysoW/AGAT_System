@@ -15,13 +15,14 @@ class Dispatcher:
 
         threads: list[Thread] = []
         results: dict = {
-            "rag": "",
-            "math": ""
+            "rag": None,
+            "math": None,
+            "console": None
         }
         
-        threads.append(Thread(target=self._send_rag, args=(input['context'],results)))
-        threads.append(Thread(target=self._send_math, args=(input['context'],results)))
-        threads.append(Thread(target=self._send_console, args=(input['context'],)))
+        threads.append(Thread(target=self._send_rag, args=(input['stt']['data']['text'],results)))
+        threads.append(Thread(target=self._send_math, args=(input['stt']['data']['text'],results)))
+        threads.append(Thread(target=self._send_console, args=(input['stt']['data']['text'],results)))
 
         for thread in threads:
             thread.start()
@@ -34,18 +35,19 @@ class Dispatcher:
         return
         result = asyncio.run(send_rag(text))
 
-        results['rag'] = result
+        results['rag'] = result # Will return RAG info
 
     def _send_math(self, text: str, results: dict): # Sends request to math system
         if self._need_math(text):
             result = asyncio.run(send_math(text))
 
-            results['math'] = result
+            results['math'] = result # Will retern an answer for math problem
 
-    def _send_console(self, text: str): # Sends request to console system
+    def _send_console(self, text: str, results: dict): # Sends request to console system
         if self._need_console(text):
-            asyncio.run(send_console(text))
-    
+            result = asyncio.run(send_console(text)) # Will return true if can init comand else false
+            results['console'] = result
+
     # filter functions
     def _need_math(self, text: str) -> bool: # Checks if math calculations are needed
         return
@@ -57,7 +59,7 @@ class Dispatcher:
 
     def _need_console(self, text: str) -> bool: # Checks if console comands are needed
         return
-        y = self.need_math.filter(text)
+        y = self.need_console.filter(text)
 
         if y > 0.8:
             return True

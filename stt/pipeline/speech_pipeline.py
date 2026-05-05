@@ -1,8 +1,11 @@
+import re
 
 from .whisper_stt import Whisper
 from .vad import VAD
 
 class STT:
+
+    _PATTERN = re.compile(r'[A-Za-z0-9\u0400-\u04FF]')
     
     def __init__(self):
         self.vad = VAD()
@@ -26,7 +29,7 @@ class STT:
                 speach_info = self._get_speach_text(audio)
                 print("text:", speach_info)
 
-                if speach_info['text']:
+                if speach_info['text'] and self._PATTERN.search(speach_info['text']):
                     if self._clacuate_speech_probability(speach_info['segments']) > 0.6:
                         return {
                             'text': speach_info['text'],

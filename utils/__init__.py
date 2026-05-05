@@ -1,1 +1,1 @@
-import data_processing
+from .data_processing import BPE
