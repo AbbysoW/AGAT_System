@@ -56,25 +56,29 @@ async def send_console(text: str): # send request to console module
             raise HTTPException(status_code=500, detail=str(e))
         
 # main modules
+timeout = httpx.Timeout(300.0, connect=10.0)
 async def send_request(context: list[dict]): # send request to chat modele
     try:
         response = await http_client.post(
             f"{CHAT_URL}/chat/generate",  
             json={
                 "context": context
-            }
+            },
+            timeout=timeout
         )
         response.raise_for_status()
         return response.json()
 
     except httpx.TimeoutException:
-        print("Chat Service не ответил за 10 секунд (Таймаут)")
+        print(f"Chat Service не ответил за {timeout.read} секунд (Таймаут)")
     except httpx.HTTPStatusError as e:
         print(f"Chat Service вернул ошибку {e.response.status_code}: {e.response.text}")
     except httpx.RequestError as e:
         print(f"Ошибка сети при запросе к Chat: {e}")
     except Exception as e:
-        print("Непредвиденная ошибка при отправке в Chat")
+        print(f"Непредвиденная ошибка при отправке в Chat: {type(e).__name__}: {e}")
+        import traceback
+        traceback.print_exc()
         
     return None
 

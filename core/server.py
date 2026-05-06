@@ -20,8 +20,9 @@ class STT_INPUT(BaseModel):
     language: str
     speaker: str
 @app.post("/core/stt")
-def add_speach(speach_info: STT_INPUT):
-    core.add_stt_input(speach_info.text, speach_info.speaker, speach_info.language)
+def add_speach(speach_info: STT_INPUT, background_tasks: BackgroundTasks):
+    background_tasks.add_task(core.add_stt_input, speach_info.text, speach_info.speaker, speach_info.language)
+    return {'status': 'OK'}
 
 @app.post("/core/cv")
 def add_speach():

@@ -1,0 +1,1 @@
+from .own_model import MyModel

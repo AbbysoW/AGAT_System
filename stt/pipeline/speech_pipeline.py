@@ -33,7 +33,7 @@ class STT:
                     if self._clacuate_speech_probability(speach_info['segments']) > 0.6:
                         return {
                             'text': speach_info['text'],
-                            "speaker": "User",
+                            "speaker": "Владелец",
                             'language': speach_info['language']
                         }
                 

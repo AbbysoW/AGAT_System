@@ -8,7 +8,7 @@ from .chat_module import ChatModule
 
 app = FastAPI()
 
-chat  = ChatModule(32)
+chat  = ChatModule()
 
 
 class Context(BaseModel):
