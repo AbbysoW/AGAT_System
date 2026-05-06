@@ -19,6 +19,7 @@ http_client = httpx.AsyncClient(
 )
 
 async def send_to_core(speach_info: dict):
+    logger.debug(f"Sending speech to core | text_len={len(speach_info['text'])}")
     try:
         response = await http_client.post(
             f"{CORE_URL}/core/stt",  
@@ -29,16 +30,17 @@ async def send_to_core(speach_info: dict):
             }
         )
         response.raise_for_status()
+        logger.info(f"Speech sent to core | status={response.status_code}")
         return response.json()
 
     except httpx.TimeoutException:
-        print("Core Service не ответил за 10 секунд (Таймаут)")
+        logger.error(f"Core timeout (>10s)")
     except httpx.HTTPStatusError as e:
-        print(f"Core Service вернул ошибку {e.response.status_code}: {e.response.text}")
+        logger.error(f"Core HTTP error | code={e.response.status_code}")
     except httpx.RequestError as e:
-        print(f"Ошибка сети при запросе к Core: {e}")
+        logger.error(f"Core connection error: {type(e).__name__}")
     except Exception as e:
-        print("Непредвиденная ошибка при отправке в Core")
+        logger.error(f"Core send error: {type(e).__name__}: {e}", exc_info=True)
     
     return None
 

@@ -1,5 +1,7 @@
+import logging
 from .models import Qwen3_4B
 
+logger = logging.getLogger(__name__)
 
 class SideModel:
     hierarchy =  [
@@ -11,7 +13,13 @@ class SideModel:
     ]
 
     def __init__(self):
-        self.pipeline = Qwen3_4B()
+        logger.info("SideModel init")
+        try:
+            self.pipeline = Qwen3_4B()
+            logger.info("Qwen3 model loaded")
+        except Exception as e:
+            logger.error(f"SideModel init error: {type(e).__name__}: {e}", exc_info=True)
+            raise
 
     def _preprocess(self, context_list: list[dict]) -> str:
         # context_list[-1] = {
@@ -45,5 +53,13 @@ class SideModel:
             return role + '\n' + standart_message + '\n'
 
     def __call__(self, x: list[dict]) -> str:
-        promt = self._preprocess(x)
-        return self.pipeline(promt)
+        logger.info(f"SideModel call | context_len={len(x)}")
+        try:
+            promt = self._preprocess(x)
+            logger.debug(f"Prompt created | length={len(promt)}")
+            result = self.pipeline(promt)
+            logger.info(f"Pipeline result | length={len(str(result))}")
+            return result
+        except Exception as e:
+            logger.error(f"SideModel error: {type(e).__name__}: {e}", exc_info=True)
+            raise

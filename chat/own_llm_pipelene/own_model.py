@@ -1,18 +1,28 @@
 import torch
 import numpy as np
+import logging
 
 from .utils.vocabulary import load_vocabulary # temp
 from .utils.tokenizer.tokenizer import Tokenizer
 
+logger = logging.getLogger(__name__)
+
 class MyModel:
     def __init__(self, seq_len=512):
+        logger.info("MyModel init")
+        try:
+            self.model = None # DecoderOnly
+            self.id_token_vocabulary, self.token_id_vocabulary = load_vocabulary('chat/data/vocabulary/bpe_vocabulary.json') # some path to file
+            logger.debug(f"Vocabulary loaded | size={len(self.id_token_vocabulary)}")
 
-        self.model = None # DecoderOnly
-        self.id_token_vocabulary, self.token_id_vocabulary = load_vocabulary('chat/data/vocabulary/bpe_vocabulary.json') # some path to file
+            self._tokenizer = Tokenizer()
+            logger.debug("Tokenizer initialized")
 
-        self._tokenizer = Tokenizer()
-
-        self.seq_len = seq_len
+            self.seq_len = seq_len
+            logger.info(f"MyModel initialized | seq_len={seq_len}")
+        except Exception as e:
+            logger.error(f"MyModel init error: {type(e).__name__}: {e}", exc_info=True)
+            raise
 
     # Input processing
     def _tokenize(self, text: str) -> list:
@@ -32,18 +42,23 @@ class MyModel:
         #     '/user': '',
         #     '/model': ''
         # }
+        logger.debug(f"Pre-processing context | context_len={len(context_list)}")
+        try:
+            tokens = []
 
-        tokens = []
-        print(context_list)
+            for context in context_list:
+                for key, value in context.items():
+                    if value:
+                        tokens.append(self._token_to_ID(key))
+                        tokens.extend(self._tokenize(value))
+            tokens.append(1)
 
-        for context in context_list:
-            for key, value in context.items():
-                if value:
-                    tokens.append(self._token_to_ID(key))
-                    tokens.extend(self._tokenize(value))
-        tokens.append(1)
-
-        return tokens[-self.seq_len:]
+            result = tokens[-self.seq_len:]
+            logger.debug(f"Tokens created | count={len(result)}")
+            return result
+        except Exception as e:
+            logger.error(f"Pre-process error: {type(e).__name__}: {e}", exc_info=True)
+            raise
     
     def _fill(self, tokens: list[int]) -> tuple[torch.Tensor, torch.Tensor]:
 

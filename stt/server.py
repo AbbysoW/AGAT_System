@@ -2,48 +2,69 @@
 import asyncio
 import signal
 import sys
+import logging
 
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 
-from .stt_module import STT
-from .client import send_to_core, http_client
+from stt_module import STT
+from client import send_to_core, http_client
+from logger import setup_logging, setup_uvicorn_logging
 
-stt = STT()
+setup_logging()
+setup_uvicorn_logging()
+
+logger = logging.getLogger(__name__)
+
+stt = None
 
 # STATUP
 async def stt_worker():
-    print("STT Worker запущен...")
+    logger.info("STT worker started")
     try:
         while True:
             try:
+                logger.debug("STT listening...")
                 speach_info = await asyncio.to_thread(stt.listen)
+                logger.info(f"Speech received | text_len={len(speach_info['text'])}")
                 
                 await send_to_core(speach_info)
+                logger.debug("Speech sent to core")
                     
+            except asyncio.CancelledError:
+                logger.info("STT worker cancelled")
+                raise
             except Exception as e:
-                print(f"Ошибка в цикле STT: {e}")
+                logger.error(f"STT loop error: {type(e).__name__}: {e}", exc_info=True)
                 await asyncio.sleep(1)
     except asyncio.CancelledError:
-        print("STT Worker отменён")
-        raise
+        pass
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    task = asyncio.create_task(stt_worker())
-    
-    yield
-
-    # Корректное завершение задачи
-    task.cancel()
+    global stt
     try:
-        await task
-    except asyncio.CancelledError:
-        pass
-    
-    # Закрываем http_client
-    await http_client.aclose()
-    print("STT Worker остановлен")
+        logger.info("STT server starting")
+        stt = STT()
+        logger.info("STT instance created")
+        
+        task = asyncio.create_task(stt_worker())
+        logger.info("STT worker task created")
+        
+        yield
+        
+        logger.info("STT server shutting down")
+        task.cancel()
+        try:
+            await task
+        except asyncio.CancelledError:
+            pass
+        
+        await http_client.aclose()
+        logger.info("STT server stopped")
+    except Exception as e:
+        logger.error(f"STT lifespan error: {type(e).__name__}: {e}", exc_info=True)
+        raise
 
 app = FastAPI(lifespan=lifespan)
 

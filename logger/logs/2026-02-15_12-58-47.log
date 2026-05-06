@@ -1,3 +1,0 @@
-2026-02-15 12:58:47,538 | DEBUG    | asyncio              | Using selector: EpollSelector
-2026-02-15 12:58:52,710 | INFO     | uvicorn.error        | Started server process [14372]
-2026-02-15 12:58:52,710 | INFO     | uvicorn.error        | Waiting for application startup.

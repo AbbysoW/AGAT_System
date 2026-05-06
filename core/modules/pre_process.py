@@ -1,20 +1,30 @@
+import logging
 from datetime import datetime
 from typing_extensions import final
+
+logger = logging.getLogger(__name__)
 
 class PreProcess:
     
     def __init__(self):
+        logger.info("PreProcess initialized")
         pass
 
     def process(self, input: dict, extra: dict) -> tuple[dict, dict]:
-        # input: data['input']
-        
-        new_context_el = self._make_context_element(input)
-        processed_extra = self._process_extra(extra)
+        logger.debug("Pre-processing input")
+        try:
+            # input: data['input']
+            
+            new_context_el = self._make_context_element(input)
+            processed_extra = self._process_extra(extra)
 
-        model_input = self._add_extra(new_context_el, processed_extra)
+            model_input = self._add_extra(new_context_el, processed_extra)
+            logger.debug("Pre-processing completed")
 
-        return model_input, new_context_el
+            return model_input, new_context_el
+        except Exception as e:
+            logger.error(f"Pre-process error: {type(e).__name__}: {e}", exc_info=True)
+            raise
 
     def _make_context_element(self, input: dict) -> dict:
         final_context = {

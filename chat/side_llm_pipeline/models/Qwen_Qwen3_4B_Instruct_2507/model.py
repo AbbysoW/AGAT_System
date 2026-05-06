@@ -1,6 +1,9 @@
 import os
+import logging
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
+
+logger = logging.getLogger(__name__)
 
 os.environ["HF_TOKEN"] = "REMOVED_SECRET"
 
@@ -31,44 +34,57 @@ class Model:
     """
 
     def __init__(self):
-        print("Initializing Model...")
-        self.model_name = "Qwen/Qwen3-4B-Instruct-2507"
-        self.device = "cuda"  # for GPU usage or "cpu" for CPU usage
+        logger.info("Loading Qwen model")
+        try:
+            self.model_name = "Qwen/Qwen3-4B-Instruct-2507"
+            self.device = "cuda"
 
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            self.model_name,
-            cache_dir="chat/side_llm_pipeline/models/Qwen_Qwen3_4B_Instruct_2507")
-        self.model = AutoModelForCausalLM.from_pretrained(
-            self.model_name,
-            cache_dir="chat/side_llm_pipeline/models/Qwen_Qwen3_4B_Instruct_2507",
-            torch_dtype="auto",
-            device_map="auto"
-        )
-        print("Model initialized.")
+            logger.debug(f"Loading tokenizer | model={self.model_name}")
+            self.tokenizer = AutoTokenizer.from_pretrained(
+                self.model_name,
+                cache_dir="chat/side_llm_pipeline/models/Qwen_Qwen3_4B_Instruct_2507")
+            logger.debug("Tokenizer loaded")
+            
+            logger.debug(f"Loading model | model={self.model_name} device={self.device}")
+            self.model = AutoModelForCausalLM.from_pretrained(
+                self.model_name,
+                cache_dir="chat/side_llm_pipeline/models/Qwen_Qwen3_4B_Instruct_2507",
+                torch_dtype="auto",
+                device_map="auto"
+            )
+            logger.info("Qwen model loaded successfully")
+        except Exception as e:
+            logger.error(f"Qwen load error: {type(e).__name__}: {e}", exc_info=True)
+            raise
 
     def __call__(self, prompt: str):
-        print("Processing prompt")
-        messages_think = [
-            {"role": "system", "content": self.SYSTEM_PROMPT},
-            {"role": "user", "content": prompt}
-        ]
+        logger.debug(f"Qwen inference | prompt_len={len(prompt)}")
+        try:
+            messages_think = [
+                {"role": "system", "content": self.SYSTEM_PROMPT},
+                {"role": "user", "content": prompt}
+            ]
 
-        text = self.tokenizer.apply_chat_template(
-            messages_think,
-            tokenize=False,
-            add_generation_prompt=True,
-        )
-        model_inputs = self.tokenizer([text], return_tensors="pt").to(self.model.device)
+            text = self.tokenizer.apply_chat_template(
+                messages_think,
+                tokenize=False,
+                add_generation_prompt=True,
+            )
+            model_inputs = self.tokenizer([text], return_tensors="pt").to(self.model.device)
+            logger.debug("Tokenization complete")
 
-        print("Model generating...")
-        generated_ids = self.model.generate(**model_inputs, max_new_tokens=256)
-        print("Model generated IDs")
+            generated_ids = self.model.generate(**model_inputs, max_new_tokens=256)
+            logger.debug("Generation complete")
 
-        # Get and decode the output
-        output_ids = generated_ids[0][len(model_inputs.input_ids[0]) :]
-        decode_message = self.tokenizer.decode(output_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)
-        print(decode_message)
-        resp = decode_message.split('</think>')
-        if len(resp) > 1:
-            return resp[1]
-        return resp[0]
+            # Get and decode the output
+            output_ids = generated_ids[0][len(model_inputs.input_ids[0]) :]
+            decode_message = self.tokenizer.decode(output_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)
+            logger.info(f"Qwen result | result_len={len(decode_message)}")
+            
+            resp = decode_message.split('</think>')
+            if len(resp) > 1:
+                return resp[1]
+            return resp[0]
+        except Exception as e:
+            logger.error(f"Qwen inference error: {type(e).__name__}: {e}", exc_info=True)
+            raise
