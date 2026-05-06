@@ -10,6 +10,7 @@ class VAD:
         self.threshold = threshold
         self.silence_duration = silence_duration
         self.block_duration = block_duration
+        self.should_stop = False
 
     def _callback(self, indata, frames, time, status):
         self.q.put(indata.copy())

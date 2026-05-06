@@ -42,9 +42,6 @@ async def send_to_core(speach_info: dict):
     
     return None
 
-@app.on_event("shutdown")
-async def shutdown_event():
-    await http_client.aclose()
-    
+
 
 

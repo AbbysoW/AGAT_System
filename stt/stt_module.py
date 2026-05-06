@@ -1,20 +1,20 @@
 import re
 
-from .whisper_stt import Whisper
-from .vad import VAD
+from .pipeline.models import Whisper
+from .pipeline.vad import VAD
 
 class STT:
 
     _PATTERN = re.compile(r'[A-Za-z0-9\u0400-\u04FF]')
     
-    def __init__(self):
-        self.vad = VAD()
-
-        # self.small = Whisper("small")
-        self.medium = Whisper("small")
+    def __init__(self, samplerate: int = 16000):
+        self.vad = VAD(samplerate)
+        self.should_stop = False
+        
+        self.medium = Whisper("medium")
     
     def _get_speach_text(self, audio):
-        return self.medium.get_text(audio)
+        return self.medium(audio)
     
     def _clacuate_speech_probability(self, segments):
         sum = 0

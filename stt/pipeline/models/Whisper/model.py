@@ -1,12 +1,12 @@
 import whisper
 
 
-class Whisper:
+class Model:
 
     def __init__(self, model_type: str = "small"):
         self.model = whisper.load_model(model_type, device="cuda")
 
-    def get_text(self, audio):
+    def __call__(self, audio):
         result = self.model.transcribe(
             audio, 
             fp16=True,
