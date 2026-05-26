@@ -1,5 +1,6 @@
 import os
 import logging
+from pathlib import Path
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
@@ -42,13 +43,13 @@ class Model:
             logger.debug(f"Loading tokenizer | model={self.model_name}")
             self.tokenizer = AutoTokenizer.from_pretrained(
                 self.model_name,
-                cache_dir="chat/side_llm_pipeline/models/Qwen_Qwen3_4B_Instruct_2507")
+                cache_dir=Path(__file__).parent)
             logger.debug("Tokenizer loaded")
             
             logger.debug(f"Loading model | model={self.model_name} device={self.device}")
             self.model = AutoModelForCausalLM.from_pretrained(
                 self.model_name,
-                cache_dir="chat/side_llm_pipeline/models/Qwen_Qwen3_4B_Instruct_2507",
+                cache_dir=Path(__file__).parent,
                 torch_dtype="auto",
                 device_map="auto"
             )

@@ -1,0 +1,297 @@
+2026-05-26 11:12:27,371 | INFO     | server               | ============================================================
+2026-05-26 11:12:27,371 | INFO     | server               | CHAT SERVICE INITIALIZATION
+2026-05-26 11:12:27,371 | INFO     | server               | ============================================================
+2026-05-26 11:12:27,372 | INFO     | server               | Creating ChatModule instance...
+2026-05-26 11:12:27,372 | INFO     | chat_module          | Initializing ChatModule...
+2026-05-26 11:12:27,372 | DEBUG    | chat_module          | Loading SideModel...
+2026-05-26 11:12:27,372 | INFO     | side_llm_pipeline.side_model | Initializing SideModel...
+2026-05-26 11:12:27,373 | DEBUG    | side_llm_pipeline.side_model | Loading Qwen3 model | hierarchy: ['/hint', '/sys', '/cv', '/user', '/model']
+2026-05-26 11:12:27,373 | INFO     | side_llm_pipeline.models.Qwen_Qwen3_4B_Instruct_2507.model | Loading Qwen model
+2026-05-26 11:12:27,373 | DEBUG    | side_llm_pipeline.models.Qwen_Qwen3_4B_Instruct_2507.model | Loading tokenizer | model=Qwen/Qwen3-4B-Instruct-2507
+2026-05-26 11:12:27,422 | DEBUG    | httpcore.connection  | connect_tcp.started host='huggingface.co' port=443 local_address=None timeout=10 socket_options=None
+2026-05-26 11:12:27,550 | DEBUG    | httpcore.connection  | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7aa0b9605a20>
+2026-05-26 11:12:27,551 | DEBUG    | httpcore.connection  | start_tls.started ssl_context=<ssl.SSLContext object at 0x7aa0b97af240> server_hostname='huggingface.co' timeout=10
+2026-05-26 11:12:27,731 | DEBUG    | httpcore.connection  | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7aa0b9605e70>
+2026-05-26 11:12:27,731 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:12:27,732 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-26 11:12:27,732 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'HEAD']>
+2026-05-26 11:12:27,732 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-26 11:12:27,733 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:12:27,881 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'258'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 May 2026 08:12:27 GMT'), (b'Location', b'/api/resolve-cache/models/Qwen/Qwen3-4B-Instruct-2507/cdbee75f17c01a7cc42f958dc650907174af0554/config.json?%2FQwen%2FQwen3-4B-Instruct-2507%2Fresolve%2Fmain%2Fconfig.json=&etag=%226988f134db143052042f2bd6e0c897bc6a605189%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a1555eb-75a106000010282226c3a369;18734ae3-cfaa-4955-bfc9-0b1720fc7655'), (b'RateLimit', b'"resolvers";r=4999;t=208'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=5000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'cdbee75f17c01a7cc42f958dc650907174af0554'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"6988f134db143052042f2bd6e0c897bc6a605189"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 bc92c7a079ec548fd10416e41c612926.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'T4DOm-oOShiww2V6UbwHdvj_ifnaL1t1NdaajnUewCFNJ5IZl3qvJw==')])
+2026-05-26 11:12:27,883 | INFO     | httpx                | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 11:12:27,884 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'HEAD']>
+2026-05-26 11:12:27,884 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-26 11:12:27,884 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-26 11:12:27,885 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-26 11:12:27,886 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:12:27,886 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-26 11:12:27,886 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'HEAD']>
+2026-05-26 11:12:27,887 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-26 11:12:27,887 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:12:27,932 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'727'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 May 2026 08:09:21 GMT'), (b'ETag', b'"6988f134db143052042f2bd6e0c897bc6a605189"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a155531-5016ee1b7c3f897e736de0b4;fc17184b-5439-4bda-aa05-8f11cd0c685b'), (b'RateLimit', b'"resolvers";r=4977;t=94'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=5000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'cdbee75f17c01a7cc42f958dc650907174af0554'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 bc92c7a079ec548fd10416e41c612926.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'InL2mH4B77nudxzMoKilMI9QfnNWib8sYgS1dnp48kwiXv4wQYUIqg=='), (b'Age', b'186')])
+2026-05-26 11:12:27,933 | INFO     | httpx                | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B-Instruct-2507/cdbee75f17c01a7cc42f958dc650907174af0554/config.json "HTTP/1.1 200 OK"
+2026-05-26 11:12:27,934 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'HEAD']>
+2026-05-26 11:12:27,934 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-26 11:12:27,934 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-26 11:12:27,935 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-26 11:12:27,976 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:12:27,976 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-26 11:12:27,976 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'HEAD']>
+2026-05-26 11:12:27,976 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-26 11:12:27,976 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:12:28,122 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'278'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 May 2026 08:12:28 GMT'), (b'Location', b'/api/resolve-cache/models/Qwen/Qwen3-4B-Instruct-2507/cdbee75f17c01a7cc42f958dc650907174af0554/tokenizer_config.json?%2FQwen%2FQwen3-4B-Instruct-2507%2Fresolve%2Fmain%2Ftokenizer_config.json=&etag=%2251c1be0d9192e7f6e6596de71d0f07d58fbc32ac%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a1555eb-6c3a5852301bd4860c2ea69e;baca6587-e76e-46e2-9c99-2b0eedd8f891'), (b'RateLimit', b'"resolvers";r=4998;t=208'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=5000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'cdbee75f17c01a7cc42f958dc650907174af0554'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'tokenizer_config.json; filename="tokenizer_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"51c1be0d9192e7f6e6596de71d0f07d58fbc32ac"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 bc92c7a079ec548fd10416e41c612926.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'UlnM47VWRFqkWF1zagAr4ox-2a7UGYeFZkueVw46YJEazDaeh4dAXA==')])
+2026-05-26 11:12:28,123 | INFO     | httpx                | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 11:12:28,124 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'HEAD']>
+2026-05-26 11:12:28,124 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-26 11:12:28,124 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-26 11:12:28,124 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-26 11:12:28,125 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:12:28,126 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-26 11:12:28,126 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'HEAD']>
+2026-05-26 11:12:28,126 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-26 11:12:28,127 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:12:28,173 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'9377'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 May 2026 08:09:21 GMT'), (b'ETag', b'"51c1be0d9192e7f6e6596de71d0f07d58fbc32ac"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a155531-4dbf3eb30aa946bd08b62491;5a1be8a0-cd1d-4491-afb8-45202b9c52d5'), (b'RateLimit', b'"resolvers";r=4974;t=94'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=5000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'cdbee75f17c01a7cc42f958dc650907174af0554'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'tokenizer_config.json; filename="tokenizer_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 bc92c7a079ec548fd10416e41c612926.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'7SKnAQB7OCaGmJu9yCL3eyeaiLpize9b9IEugYzB30QnRR25pc84iQ=='), (b'Age', b'187')])
+2026-05-26 11:12:28,173 | INFO     | httpx                | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B-Instruct-2507/cdbee75f17c01a7cc42f958dc650907174af0554/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-26 11:12:28,174 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'HEAD']>
+2026-05-26 11:12:28,174 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-26 11:12:28,174 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-26 11:12:28,174 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-26 11:12:28,217 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'GET']>
+2026-05-26 11:12:28,218 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-26 11:12:28,218 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'GET']>
+2026-05-26 11:12:28,218 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-26 11:12:28,219 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'GET']>
+2026-05-26 11:12:28,368 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 404, b'Not Found', [(b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'64'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 May 2026 08:12:28 GMT'), (b'ETag', b'W/"40-09f9IAqP13xarAhQxFS2W8rvRkM"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a1555ec-6d6797ec2b3a6b742f1b273f;b41682fe-5956-405d-abc5-c537b643d5d9'), (b'RateLimit', b'"api";r=999;t=207'), (b'RateLimit-Policy', b'"fixed window";"api";q=1000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Error-Code', b'EntryNotFound'), (b'X-Error-Message', b'additional_chat_templates does not exist on "main"'), (b'X-Cache', b'Error from cloudfront'), (b'Via', b'1.1 bc92c7a079ec548fd10416e41c612926.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'Dyw46NqPfD9H0_L55k0N2zcNVAIekNjMmAZ_xN-8ayCBB-4wdo_edw==')])
+2026-05-26 11:12:28,371 | INFO     | httpx                | HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B-Instruct-2507/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-26 11:12:28,373 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'GET']>
+2026-05-26 11:12:28,373 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-26 11:12:28,374 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-26 11:12:28,374 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-26 11:12:28,377 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'GET']>
+2026-05-26 11:12:28,377 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-26 11:12:28,377 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'GET']>
+2026-05-26 11:12:28,378 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-26 11:12:28,378 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'GET']>
+2026-05-26 11:12:28,527 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 May 2026 08:12:28 GMT'), (b'content-encoding', b'gzip'), (b'ETag', b'W/"87c-BT3cBUisXBBPBTX6DEfXt5tKMsY"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a1555ec-2ff84aa52f89453c2037fd55;62ee1849-39d4-451c-846b-2cfc1cfc7ea6'), (b'RateLimit', b'"api";r=998;t=207'), (b'RateLimit-Policy', b'"fixed window";"api";q=1000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'vary', b'Accept-Encoding'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 bc92c7a079ec548fd10416e41c612926.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'S1h-iNoSi1Cx4dAIhkk0w8RdP4OPIafEOF9sj6-1th-2hePScQXWHg==')])
+2026-05-26 11:12:28,528 | INFO     | httpx                | HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B-Instruct-2507/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-26 11:12:28,528 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'GET']>
+2026-05-26 11:12:28,529 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-26 11:12:28,529 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-26 11:12:28,529 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-26 11:12:29,287 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'GET']>
+2026-05-26 11:12:29,287 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-26 11:12:29,287 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'GET']>
+2026-05-26 11:12:29,288 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-26 11:12:29,288 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'GET']>
+2026-05-26 11:12:29,440 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 May 2026 08:12:29 GMT'), (b'content-encoding', b'gzip'), (b'ETag', b'W/"1d36-QFoH9iUNl++iLstXBkDTXIZd6y8"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a1555ed-7e072d2e24c0411337ccf7fc;70e851ad-a085-4868-a62c-73bc0983e020'), (b'RateLimit', b'"api";r=997;t=206'), (b'RateLimit-Policy', b'"fixed window";"api";q=1000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'vary', b'Accept-Encoding'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 bc92c7a079ec548fd10416e41c612926.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'VJGHqsP9x7l7TPHf9LbCk-AphW1yqr4Kx0WLWX3-goxQKhHVuj_gcw==')])
+2026-05-26 11:12:29,442 | INFO     | httpx                | HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B-Instruct-2507 "HTTP/1.1 200 OK"
+2026-05-26 11:12:29,442 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'GET']>
+2026-05-26 11:12:29,443 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-26 11:12:29,444 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-26 11:12:29,445 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-26 11:12:29,448 | DEBUG    | side_llm_pipeline.models.Qwen_Qwen3_4B_Instruct_2507.model | Tokenizer loaded
+2026-05-26 11:12:29,449 | DEBUG    | side_llm_pipeline.models.Qwen_Qwen3_4B_Instruct_2507.model | Loading model | model=Qwen/Qwen3-4B-Instruct-2507 device=cuda
+2026-05-26 11:12:29,451 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:12:29,451 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-26 11:12:29,452 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'HEAD']>
+2026-05-26 11:12:29,452 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-26 11:12:29,452 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:12:29,603 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'258'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 May 2026 08:12:29 GMT'), (b'Location', b'/api/resolve-cache/models/Qwen/Qwen3-4B-Instruct-2507/cdbee75f17c01a7cc42f958dc650907174af0554/config.json?%2FQwen%2FQwen3-4B-Instruct-2507%2Fresolve%2Fmain%2Fconfig.json=&etag=%226988f134db143052042f2bd6e0c897bc6a605189%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a1555ed-3f27a86e54e31a2a32ee40ee;9114f132-117e-407b-a446-2dd0fc8b6d69'), (b'RateLimit', b'"resolvers";r=4997;t=206'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=5000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'cdbee75f17c01a7cc42f958dc650907174af0554'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"6988f134db143052042f2bd6e0c897bc6a605189"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 bc92c7a079ec548fd10416e41c612926.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'53MQZl8AAk9Ea-T0tcfHfk_VZeCSesaNl26M5iUsNzbu3C0pCsXcPQ==')])
+2026-05-26 11:12:29,603 | INFO     | httpx                | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 11:12:29,604 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'HEAD']>
+2026-05-26 11:12:29,604 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-26 11:12:29,604 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-26 11:12:29,604 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-26 11:12:29,605 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:12:29,605 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-26 11:12:29,605 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'HEAD']>
+2026-05-26 11:12:29,606 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-26 11:12:29,606 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:12:29,630 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'727'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 May 2026 08:09:21 GMT'), (b'ETag', b'"6988f134db143052042f2bd6e0c897bc6a605189"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a155531-5016ee1b7c3f897e736de0b4;fc17184b-5439-4bda-aa05-8f11cd0c685b'), (b'RateLimit', b'"resolvers";r=4977;t=94'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=5000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'cdbee75f17c01a7cc42f958dc650907174af0554'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 bc92c7a079ec548fd10416e41c612926.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'm2oWScg_dCnUVwKfuA5NYGYloNFsIMHt90vd_tTv3yMffLrtNw0v7Q=='), (b'Age', b'188')])
+2026-05-26 11:12:29,631 | INFO     | httpx                | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B-Instruct-2507/cdbee75f17c01a7cc42f958dc650907174af0554/config.json "HTTP/1.1 200 OK"
+2026-05-26 11:12:29,632 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'HEAD']>
+2026-05-26 11:12:29,632 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-26 11:12:29,632 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-26 11:12:29,632 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-26 11:13:34,504 | DEBUG    | httpcore.connection  | close.started
+2026-05-26 11:13:34,620 | DEBUG    | httpcore.connection  | close.complete
+2026-05-26 11:13:34,621 | DEBUG    | httpcore.connection  | connect_tcp.started host='huggingface.co' port=443 local_address=None timeout=10 socket_options=None
+2026-05-26 11:13:34,750 | DEBUG    | httpcore.connection  | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7aa0b45a8e80>
+2026-05-26 11:13:34,750 | DEBUG    | httpcore.connection  | start_tls.started ssl_context=<ssl.SSLContext object at 0x7aa0b97af240> server_hostname='huggingface.co' timeout=10
+2026-05-26 11:13:35,331 | DEBUG    | httpcore.connection  | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x7aa0b45a8ee0>
+2026-05-26 11:13:35,332 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:13:35,332 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-26 11:13:35,333 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'HEAD']>
+2026-05-26 11:13:35,333 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-26 11:13:35,333 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:13:35,487 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'280'), (b'Connection', b'keep-alive'), (b'Date', b'Tue, 26 May 2026 08:13:35 GMT'), (b'Location', b'/api/resolve-cache/models/Qwen/Qwen3-4B-Instruct-2507/cdbee75f17c01a7cc42f958dc650907174af0554/generation_config.json?%2FQwen%2FQwen3-4B-Instruct-2507%2Fresolve%2Fmain%2Fgeneration_config.json=&etag=%22432531a002c181a19de338313d2375e9d7494d7e%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a15562f-3b13303b0bbd875619fec2d2;d8e59fe2-ac32-4f74-9cf3-d812fabc67e0'), (b'RateLimit', b'"resolvers";r=4996;t=140'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=5000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'cdbee75f17c01a7cc42f958dc650907174af0554'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'HIT'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'generation_config.json; filename="generation_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"432531a002c181a19de338313d2375e9d7494d7e"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 4e08e102c2732c67db56ba7b7c275360.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'0LN6RMCgv80Cv8vAQ_IIAYlJw4GipR6lT7lVAoR1eawVbQuk0rdj8w==')])
+2026-05-26 11:13:35,504 | INFO     | httpx                | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-26 11:13:35,505 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'HEAD']>
+2026-05-26 11:13:35,505 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-26 11:13:35,505 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-26 11:13:35,505 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-26 11:13:35,506 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:13:35,507 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-26 11:13:35,507 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'HEAD']>
+2026-05-26 11:13:35,507 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-26 11:13:35,507 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'HEAD']>
+2026-05-26 11:13:35,534 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'238'), (b'Connection', b'keep-alive'), (b'Date', b'Sun, 17 May 2026 10:59:01 GMT'), (b'ETag', b'"432531a002c181a19de338313d2375e9d7494d7e"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a099f75-55bcfb3f163e5aee38389dbf;2960ff9a-d370-4570-b75e-bc0443bfab94'), (b'RateLimit', b'"resolvers";r=4995;t=114'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=5000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'cdbee75f17c01a7cc42f958dc650907174af0554'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'generation_config.json; filename="generation_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 4e08e102c2732c67db56ba7b7c275360.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'j60e03TzOy4-Mb34Hi6cwqS5tX9F2BBajOoUnHu3XBa5H4UzUaGSyw=='), (b'Age', b'767674')])
+2026-05-26 11:13:35,535 | INFO     | httpx                | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B-Instruct-2507/cdbee75f17c01a7cc42f958dc650907174af0554/generation_config.json "HTTP/1.1 200 OK"
+2026-05-26 11:13:35,536 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'HEAD']>
+2026-05-26 11:13:35,536 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-26 11:13:35,536 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-26 11:13:35,536 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-26 11:13:35,663 | WARNING  | accelerate.big_modeling | Some parameters are on the meta device because they were offloaded to the cpu and disk.
+2026-05-26 11:13:35,707 | INFO     | side_llm_pipeline.models.Qwen_Qwen3_4B_Instruct_2507.model | Qwen model loaded successfully
+2026-05-26 11:13:35,708 | INFO     | side_llm_pipeline.side_model | ✓ Qwen3 model loaded successfully
+2026-05-26 11:13:35,708 | DEBUG    | side_llm_pipeline.side_model | SideModel ready for processing
+2026-05-26 11:13:35,708 | INFO     | chat_module          | ✓ Chat model loaded successfully
+2026-05-26 11:13:35,708 | DEBUG    | chat_module          | ChatModule ready for inference
+2026-05-26 11:13:35,708 | INFO     | server               | ✓ Chat service initialized successfully
+2026-05-26 11:13:35,708 | INFO     | server               | Server ready to accept requests on port 8001
+2026-05-26 11:13:35,708 | INFO     | server               | ============================================================
+2026-05-26 11:13:35,902 | INFO     | uvicorn.error        | Started server process [7631]
+2026-05-26 11:13:35,908 | INFO     | uvicorn.error        | Waiting for application startup.
+2026-05-26 11:13:35,909 | INFO     | server               | ============================================================
+2026-05-26 11:13:35,909 | INFO     | server               | CHAT SERVICE STARTUP COMPLETED
+2026-05-26 11:13:35,909 | INFO     | server               | ============================================================
+2026-05-26 11:13:35,909 | INFO     | uvicorn.error        | Application startup complete.
+2026-05-26 11:13:35,911 | INFO     | uvicorn.error        | Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+2026-05-26 11:14:28,217 | INFO     | server               | 📥 Chat generation request | context_len=1
+2026-05-26 11:14:28,218 | DEBUG    | server               | Context structure: [['/sys', '/cv', '/user', '/hint']]
+2026-05-26 11:14:28,218 | DEBUG    | server               | Calling chat model for generation...
+2026-05-26 11:14:28,218 | INFO     | chat_module          | 📤 Chat model call | context_len=1
+2026-05-26 11:14:28,218 | DEBUG    | chat_module          | Context structure: [['/sys', '/cv', '/user', '/hint']]
+2026-05-26 11:14:28,218 | DEBUG    | chat_module          | Starting model inference...
+2026-05-26 11:14:28,219 | INFO     | side_llm_pipeline.side_model | 📤 SideModel call | context_len=1
+2026-05-26 11:14:28,219 | DEBUG    | side_llm_pipeline.side_model | Context structure: [['/sys', '/cv', '/user', '/hint']]
+2026-05-26 11:14:28,219 | DEBUG    | side_llm_pipeline.side_model | Starting prompt creation...
+2026-05-26 11:14:28,219 | DEBUG    | side_llm_pipeline.side_model | Pre-processing context | context_size=1
+2026-05-26 11:14:28,219 | DEBUG    | side_llm_pipeline.side_model | Processing context element 1/1
+2026-05-26 11:14:28,220 | DEBUG    | side_llm_pipeline.side_model | Distributing roles for context element | roles: ['/sys', '/cv', '/user', '/hint']
+2026-05-26 11:14:28,220 | DEBUG    | side_llm_pipeline.side_model | Processing role: /hint
+2026-05-26 11:14:28,220 | DEBUG    | side_llm_pipeline.side_model | Role /hint is empty - using default message
+2026-05-26 11:14:28,220 | DEBUG    | side_llm_pipeline.side_model | Role /hint added | content_len=14
+2026-05-26 11:14:28,220 | DEBUG    | side_llm_pipeline.side_model | Processing role: /sys
+2026-05-26 11:14:28,220 | DEBUG    | side_llm_pipeline.side_model | Role /sys is empty - using default message
+2026-05-26 11:14:28,220 | DEBUG    | side_llm_pipeline.side_model | Role /sys added | content_len=13
+2026-05-26 11:14:28,221 | DEBUG    | side_llm_pipeline.side_model | Processing role: /cv
+2026-05-26 11:14:28,221 | DEBUG    | side_llm_pipeline.side_model | Role /cv is empty - using default message
+2026-05-26 11:14:28,221 | DEBUG    | side_llm_pipeline.side_model | Role /cv added | content_len=12
+2026-05-26 11:14:28,221 | DEBUG    | side_llm_pipeline.side_model | Processing role: /user
+2026-05-26 11:14:28,221 | DEBUG    | side_llm_pipeline.side_model | Role /user has content | len=36
+2026-05-26 11:14:28,221 | DEBUG    | side_llm_pipeline.side_model | Role /user added | content_len=43
+2026-05-26 11:14:28,221 | DEBUG    | side_llm_pipeline.side_model | Processing role: /model
+2026-05-26 11:14:28,222 | DEBUG    | side_llm_pipeline.side_model | Role /model is empty - using default message
+2026-05-26 11:14:28,222 | DEBUG    | side_llm_pipeline.side_model | Role /model added | content_len=15
+2026-05-26 11:14:28,222 | DEBUG    | side_llm_pipeline.side_model | Context element 1 added | current_len=97
+2026-05-26 11:14:28,222 | DEBUG    | side_llm_pipeline.side_model | Context pre-processing completed | total_len=97
+2026-05-26 11:14:28,222 | INFO     | side_llm_pipeline.side_model | ✓ Prompt created | length=97
+2026-05-26 11:14:28,223 | DEBUG    | side_llm_pipeline.side_model | Prompt:
+/hint
+(empty)
+/sys
+(empty)
+/cv
+(empty)
+/user
+Владелец: Агат, включи свет в ванной
+/model
+(empty)
+
+2026-05-26 11:14:28,223 | DEBUG    | side_llm_pipeline.side_model | Starting pipeline inference...
+2026-05-26 11:14:28,223 | DEBUG    | side_llm_pipeline.models.Qwen_Qwen3_4B_Instruct_2507.model | Qwen inference | prompt_len=97
+2026-05-26 11:14:28,247 | DEBUG    | side_llm_pipeline.models.Qwen_Qwen3_4B_Instruct_2507.model | Tokenization complete
+2026-05-26 11:17:18,162 | DEBUG    | side_llm_pipeline.models.Qwen_Qwen3_4B_Instruct_2507.model | Generation complete
+2026-05-26 11:17:18,197 | INFO     | side_llm_pipeline.models.Qwen_Qwen3_4B_Instruct_2507.model | Qwen result | result_len=62
+2026-05-26 11:17:18,197 | INFO     | side_llm_pipeline.side_model | ✓ Pipeline result received | length=62
+2026-05-26 11:17:18,197 | DEBUG    | side_llm_pipeline.side_model | Result: Ванная — включена. Свет теперь как у моря в погоне за солнцем.
+2026-05-26 11:17:18,198 | INFO     | chat_module          | ✓ Chat result | result_len=62
+2026-05-26 11:17:18,198 | DEBUG    | chat_module          | Chat result: Ванная — включена. Свет теперь как у моря в погоне за солнцем.
+2026-05-26 11:17:18,198 | INFO     | server               | ✓ Chat response generated | response_len=62
+2026-05-26 11:17:18,198 | DEBUG    | server               | Response: Ванная — включена. Свет теперь как у моря в погоне за солнцем.
+2026-05-26 11:17:18,201 | INFO     | uvicorn.access       | 127.0.0.1:53206 - "POST /chat/generate HTTP/1.1" 200
+2026-05-26 11:21:11,806 | INFO     | server               | 📥 Chat generation request | context_len=2
+2026-05-26 11:21:11,828 | DEBUG    | server               | Context structure: [['/sys', '/cv', '/user', '/model'], ['/sys', '/cv', '/user', '/hint']]
+2026-05-26 11:21:11,829 | DEBUG    | server               | Calling chat model for generation...
+2026-05-26 11:21:11,829 | INFO     | chat_module          | 📤 Chat model call | context_len=2
+2026-05-26 11:21:11,829 | DEBUG    | chat_module          | Context structure: [['/sys', '/cv', '/user', '/model'], ['/sys', '/cv', '/user', '/hint']]
+2026-05-26 11:21:11,829 | DEBUG    | chat_module          | Starting model inference...
+2026-05-26 11:21:11,830 | INFO     | side_llm_pipeline.side_model | 📤 SideModel call | context_len=2
+2026-05-26 11:21:11,830 | DEBUG    | side_llm_pipeline.side_model | Context structure: [['/sys', '/cv', '/user', '/model'], ['/sys', '/cv', '/user', '/hint']]
+2026-05-26 11:21:11,830 | DEBUG    | side_llm_pipeline.side_model | Starting prompt creation...
+2026-05-26 11:21:11,830 | DEBUG    | side_llm_pipeline.side_model | Pre-processing context | context_size=2
+2026-05-26 11:21:11,830 | DEBUG    | side_llm_pipeline.side_model | Processing context element 1/2
+2026-05-26 11:21:11,831 | DEBUG    | side_llm_pipeline.side_model | Distributing roles for context element | roles: ['/sys', '/cv', '/user', '/model']
+2026-05-26 11:21:11,831 | DEBUG    | side_llm_pipeline.side_model | Processing role: /hint
+2026-05-26 11:21:11,831 | DEBUG    | side_llm_pipeline.side_model | Role /hint is empty - using default message
+2026-05-26 11:21:11,831 | DEBUG    | side_llm_pipeline.side_model | Role /hint added | content_len=14
+2026-05-26 11:21:11,832 | DEBUG    | side_llm_pipeline.side_model | Processing role: /sys
+2026-05-26 11:21:11,832 | DEBUG    | side_llm_pipeline.side_model | Role /sys is empty - using default message
+2026-05-26 11:21:11,846 | DEBUG    | side_llm_pipeline.side_model | Role /sys added | content_len=13
+2026-05-26 11:21:11,846 | DEBUG    | side_llm_pipeline.side_model | Processing role: /cv
+2026-05-26 11:21:11,846 | DEBUG    | side_llm_pipeline.side_model | Role /cv is empty - using default message
+2026-05-26 11:21:11,846 | DEBUG    | side_llm_pipeline.side_model | Role /cv added | content_len=12
+2026-05-26 11:21:11,847 | DEBUG    | side_llm_pipeline.side_model | Processing role: /user
+2026-05-26 11:21:11,847 | DEBUG    | side_llm_pipeline.side_model | Role /user has content | len=36
+2026-05-26 11:21:11,847 | DEBUG    | side_llm_pipeline.side_model | Role /user added | content_len=43
+2026-05-26 11:21:11,847 | DEBUG    | side_llm_pipeline.side_model | Processing role: /model
+2026-05-26 11:21:11,848 | DEBUG    | side_llm_pipeline.side_model | Role /model has content | len=62
+2026-05-26 11:21:11,848 | DEBUG    | side_llm_pipeline.side_model | Role /model added | content_len=70
+2026-05-26 11:21:11,848 | DEBUG    | side_llm_pipeline.side_model | Context element 1 added | current_len=152
+2026-05-26 11:21:11,848 | DEBUG    | side_llm_pipeline.side_model | Processing context element 2/2
+2026-05-26 11:21:11,849 | DEBUG    | side_llm_pipeline.side_model | Distributing roles for context element | roles: ['/sys', '/cv', '/user', '/hint']
+2026-05-26 11:21:11,850 | DEBUG    | side_llm_pipeline.side_model | Processing role: /hint
+2026-05-26 11:21:11,856 | DEBUG    | side_llm_pipeline.side_model | Role /hint is empty - using default message
+2026-05-26 11:21:11,857 | DEBUG    | side_llm_pipeline.side_model | Role /hint added | content_len=14
+2026-05-26 11:21:11,857 | DEBUG    | side_llm_pipeline.side_model | Processing role: /sys
+2026-05-26 11:21:11,857 | DEBUG    | side_llm_pipeline.side_model | Role /sys is empty - using default message
+2026-05-26 11:21:11,857 | DEBUG    | side_llm_pipeline.side_model | Role /sys added | content_len=13
+2026-05-26 11:21:11,857 | DEBUG    | side_llm_pipeline.side_model | Processing role: /cv
+2026-05-26 11:21:11,857 | DEBUG    | side_llm_pipeline.side_model | Role /cv is empty - using default message
+2026-05-26 11:21:11,858 | DEBUG    | side_llm_pipeline.side_model | Role /cv added | content_len=12
+2026-05-26 11:21:11,858 | DEBUG    | side_llm_pipeline.side_model | Processing role: /user
+2026-05-26 11:21:11,858 | DEBUG    | side_llm_pipeline.side_model | Role /user has content | len=42
+2026-05-26 11:21:11,858 | DEBUG    | side_llm_pipeline.side_model | Role /user added | content_len=49
+2026-05-26 11:21:11,858 | DEBUG    | side_llm_pipeline.side_model | Processing role: /model
+2026-05-26 11:21:11,858 | DEBUG    | side_llm_pipeline.side_model | Role /model is empty - using default message
+2026-05-26 11:21:11,858 | DEBUG    | side_llm_pipeline.side_model | Role /model added | content_len=15
+2026-05-26 11:21:11,858 | DEBUG    | side_llm_pipeline.side_model | Context element 2 added | current_len=255
+2026-05-26 11:21:11,858 | DEBUG    | side_llm_pipeline.side_model | Context pre-processing completed | total_len=255
+2026-05-26 11:21:11,858 | INFO     | side_llm_pipeline.side_model | ✓ Prompt created | length=255
+2026-05-26 11:21:11,858 | DEBUG    | side_llm_pipeline.side_model | Prompt preview:
+Агат, включи свет в ванной
+/model
+Ванная — включена. Свет теперь как у моря в погоне за солнцем.
+/hint
+(empty)
+/sys
+(empty)
+/cv
+(empty)
+/user
+Владелец: Спасибо. Теперь  можно выключить
+/model
+(empty)
+...
+2026-05-26 11:21:11,859 | DEBUG    | side_llm_pipeline.side_model | Starting pipeline inference...
+2026-05-26 11:21:11,859 | DEBUG    | side_llm_pipeline.models.Qwen_Qwen3_4B_Instruct_2507.model | Qwen inference | prompt_len=255
+2026-05-26 11:21:11,868 | DEBUG    | side_llm_pipeline.models.Qwen_Qwen3_4B_Instruct_2507.model | Tokenization complete
+2026-05-26 11:22:40,408 | DEBUG    | side_llm_pipeline.models.Qwen_Qwen3_4B_Instruct_2507.model | Generation complete
+2026-05-26 11:22:40,414 | INFO     | side_llm_pipeline.models.Qwen_Qwen3_4B_Instruct_2507.model | Qwen result | result_len=81
+2026-05-26 11:22:40,414 | INFO     | side_llm_pipeline.side_model | ✓ Pipeline result received | length=81
+2026-05-26 11:22:40,415 | DEBUG    | side_llm_pipeline.side_model | Result: Свет в ванной выключен. Уже как у тёмного моря, которое не хочет ничего упускать.
+2026-05-26 11:22:40,415 | INFO     | chat_module          | ✓ Chat result | result_len=81
+2026-05-26 11:22:40,415 | DEBUG    | chat_module          | Chat result: Свет в ванной выключен. Уже как у тёмного моря, которое не хочет ничего упускать.
+2026-05-26 11:22:40,415 | INFO     | server               | ✓ Chat response generated | response_len=81
+2026-05-26 11:22:40,415 | DEBUG    | server               | Response: Свет в ванной выключен. Уже как у тёмного моря, которое не хочет ничего упускать.
+2026-05-26 11:22:40,415 | INFO     | uvicorn.access       | 127.0.0.1:56200 - "POST /chat/generate HTTP/1.1" 200
+2026-05-26 15:18:39,423 | INFO     | uvicorn.error        | Shutting down
+2026-05-26 15:18:39,566 | INFO     | uvicorn.error        | Waiting for application shutdown.
+2026-05-26 15:18:39,574 | INFO     | server               | ============================================================
+2026-05-26 15:18:39,574 | INFO     | server               | CHAT SERVICE SHUTTING DOWN
+2026-05-26 15:18:39,574 | INFO     | server               | ============================================================
+2026-05-26 15:18:39,576 | INFO     | uvicorn.error        | Application shutdown complete.
+2026-05-26 15:18:39,581 | INFO     | uvicorn.error        | Finished server process [7631]
+2026-05-26 15:18:41,903 | DEBUG    | httpcore.connection  | close.started
+2026-05-26 15:18:41,943 | DEBUG    | httpcore.connection  | close.complete

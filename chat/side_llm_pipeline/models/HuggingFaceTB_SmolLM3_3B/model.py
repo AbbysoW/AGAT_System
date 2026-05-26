@@ -1,5 +1,6 @@
 import os
 import logging
+from pathlib import Path
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
@@ -42,13 +43,13 @@ class Model:
             logger.debug(f"Loading tokenizer | model={self.model_name}")
             self.tokenizer = AutoTokenizer.from_pretrained(
                 self.model_name,
-                cache_dir="chat/side_llm_pipeline/models/HuggingFaceTB_SmolLM3_3B")
+                cache_dir=Path(__file__).parent  / "HuggingFaceTB_SmolLM3_3B")
             logger.debug("Tokenizer loaded")
             
             logger.debug(f"Loading model | model={self.model_name} device={self.device}")
             self.model = AutoModelForCausalLM.from_pretrained(
                 self.model_name,
-                cache_dir="chat/side_llm_pipeline/models/HuggingFaceTB_SmolLM3_3B"
+                cache_dir=Path(__file__).parent  / "HuggingFaceTB_SmolLM3_3B"
             ).to(self.device)
             logger.info("SmolLM3 model loaded successfully")
         except Exception as e:
