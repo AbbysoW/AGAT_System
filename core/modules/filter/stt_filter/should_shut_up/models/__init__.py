@@ -1,0 +1,1 @@
+from .prototype_based_classification.model import Model as PrototypeBasedClassifier

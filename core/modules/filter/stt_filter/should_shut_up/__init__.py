@@ -1,0 +1,1 @@
+from .should_shut_up_model import ShouldShutUpModel

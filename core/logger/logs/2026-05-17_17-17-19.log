@@ -1,0 +1,140 @@
+2026-05-17 17:17:19,745 | INFO     | main_module          | Core init
+2026-05-17 17:17:19,745 | INFO     | modules.filter       | Filters initialized
+2026-05-17 17:17:20,168 | INFO     | modules.sub_modules.filter_modules.is_important.models.stt_imp_models.models.own_model.transformer.pytorch_attention.init | MultiHeadAttention initialized
+2026-05-17 17:17:20,168 | INFO     | modules.sub_modules.filter_modules.is_important.models.stt_imp_models.models.own_model.transformer.pytorch_attention.init | MultiHeadAttentionlConfig: d_model=256, heads=1
+2026-05-17 17:17:20,170 | INFO     | modules.sub_modules.filter_modules.is_important.models.stt_imp_models.models.own_model.transformer.feedforward.init | Feedforward initialized
+2026-05-17 17:17:20,171 | INFO     | modules.sub_modules.filter_modules.is_important.models.stt_imp_models.models.own_model.transformer.feedforward.init | FeedforwardlConfig: d_model=256, d_ff=128
+2026-05-17 17:17:20,176 | INFO     | modules.sub_modules.filter_modules.is_important.models.stt_imp_models.models.own_model.transformer.encoder.init | Encoder initialized
+2026-05-17 17:17:20,176 | INFO     | modules.sub_modules.filter_modules.is_important.models.stt_imp_models.models.own_model.transformer.encoder.init | EncoderlConfig: d_model=256, heads=1, d_ff=128, dropout=0.31622776601683794
+2026-05-17 17:17:20,225 | DEBUG    | httpcore.connection  | connect_tcp.started host='huggingface.co' port=443 local_address=None timeout=10 socket_options=None
+2026-05-17 17:17:20,312 | DEBUG    | httpcore.connection  | connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x75517a3dc0a0>
+2026-05-17 17:17:20,320 | DEBUG    | httpcore.connection  | start_tls.started ssl_context=<ssl.SSLContext object at 0x75529501f6c0> server_hostname='huggingface.co' timeout=10
+2026-05-17 17:17:21,570 | DEBUG    | httpcore.connection  | start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x75517a3dc070>
+2026-05-17 17:17:21,571 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'HEAD']>
+2026-05-17 17:17:21,572 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-17 17:17:21,572 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'HEAD']>
+2026-05-17 17:17:21,572 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-17 17:17:21,572 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'HEAD']>
+2026-05-17 17:17:21,722 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'238'), (b'Connection', b'keep-alive'), (b'Date', b'Sun, 17 May 2026 14:17:21 GMT'), (b'Location', b'/api/resolve-cache/models/boltuix/bert-lite/bc0e85c1c303ee38a6b4a7276ce7cf6d0581cce5/config.json?%2Fboltuix%2Fbert-lite%2Fresolve%2Fmain%2Fconfig.json=&etag=%2281ba83673fa0d07fc98d4ba418715df42ab28a6f%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a09cdf1-45ae981815d361106f66ca16;dfb414f1-26dc-499c-a1a1-8988831a23fc'), (b'RateLimit', b'"resolvers";r=4999;t=214'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=5000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'bc0e85c1c303ee38a6b4a7276ce7cf6d0581cce5'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"81ba83673fa0d07fc98d4ba418715df42ab28a6f"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 930075038957925711fe5dca561b2c04.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'BD7Ub2DLtVGK-J0nFJb1WjrvNpm8_UpobR9Vt37zhChv1UZYa_k0Iw==')])
+2026-05-17 17:17:21,727 | INFO     | httpx                | HTTP Request: HEAD https://huggingface.co/boltuix/bert-lite/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-17 17:17:21,728 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'HEAD']>
+2026-05-17 17:17:21,729 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-17 17:17:21,729 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-17 17:17:21,729 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-17 17:17:21,731 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'HEAD']>
+2026-05-17 17:17:21,731 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-17 17:17:21,731 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'HEAD']>
+2026-05-17 17:17:21,732 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-17 17:17:21,732 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'HEAD']>
+2026-05-17 17:17:21,757 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'587'), (b'Connection', b'keep-alive'), (b'Date', b'Wed, 13 May 2026 12:33:48 GMT'), (b'ETag', b'"81ba83673fa0d07fc98d4ba418715df42ab28a6f"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a046fac-1335b433506b8b384391f3c6;adbfdde3-1218-4a8d-ac5d-f6fb77b28728'), (b'RateLimit', b'"resolvers";r=4998;t=127'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=5000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'bc0e85c1c303ee38a6b4a7276ce7cf6d0581cce5'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 930075038957925711fe5dca561b2c04.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'uG8fkhlEnfRk04DZpQpT_iPqH7TMnT3Gu767cxOzp4ODR9syWYzrcw=='), (b'Age', b'351813')])
+2026-05-17 17:17:21,765 | INFO     | httpx                | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/boltuix/bert-lite/bc0e85c1c303ee38a6b4a7276ce7cf6d0581cce5/config.json "HTTP/1.1 200 OK"
+2026-05-17 17:17:21,765 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'HEAD']>
+2026-05-17 17:17:21,765 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-17 17:17:21,765 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-17 17:17:21,766 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-17 17:17:21,869 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'HEAD']>
+2026-05-17 17:17:21,869 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-17 17:17:21,869 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'HEAD']>
+2026-05-17 17:17:21,870 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-17 17:17:21,870 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'HEAD']>
+2026-05-17 17:17:22,023 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'258'), (b'Connection', b'keep-alive'), (b'Date', b'Sun, 17 May 2026 14:17:21 GMT'), (b'Location', b'/api/resolve-cache/models/boltuix/bert-lite/bc0e85c1c303ee38a6b4a7276ce7cf6d0581cce5/tokenizer_config.json?%2Fboltuix%2Fbert-lite%2Fresolve%2Fmain%2Ftokenizer_config.json=&etag=%22d5c1bb83f067f79da262aed09cbefafcbe8b4805%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a09cdf1-284f10f20087afd43a85bf96;dd167270-ad77-42a3-9a6d-290b2517e98d'), (b'RateLimit', b'"resolvers";r=4998;t=214'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=5000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'bc0e85c1c303ee38a6b4a7276ce7cf6d0581cce5'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'tokenizer_config.json; filename="tokenizer_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"d5c1bb83f067f79da262aed09cbefafcbe8b4805"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 930075038957925711fe5dca561b2c04.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'bTsrnEWfrCrefExtx-vGfbfdzNaTQjt9nzLRuqPqNWM0aP_ozxkyXQ==')])
+2026-05-17 17:17:22,024 | INFO     | httpx                | HTTP Request: HEAD https://huggingface.co/boltuix/bert-lite/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-17 17:17:22,025 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'HEAD']>
+2026-05-17 17:17:22,025 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-17 17:17:22,026 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-17 17:17:22,026 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-17 17:17:22,027 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'HEAD']>
+2026-05-17 17:17:22,027 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-17 17:17:22,028 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'HEAD']>
+2026-05-17 17:17:22,028 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-17 17:17:22,028 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'HEAD']>
+2026-05-17 17:17:22,054 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'1300'), (b'Connection', b'keep-alive'), (b'Date', b'Wed, 13 May 2026 12:33:49 GMT'), (b'ETag', b'"d5c1bb83f067f79da262aed09cbefafcbe8b4805"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a046fad-0b06b5443de61d2216ce7b5e;c30943df-c246-4194-9edb-c69729443dee'), (b'RateLimit', b'"resolvers";r=4995;t=126'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=5000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'bc0e85c1c303ee38a6b4a7276ce7cf6d0581cce5'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'tokenizer_config.json; filename="tokenizer_config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 930075038957925711fe5dca561b2c04.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'l7YS-lOtMK1JiBbtTEMwBgIzykvBAVa_FevW2N-0SIOP3qLlDDk-tg=='), (b'Age', b'351813')])
+2026-05-17 17:17:22,055 | INFO     | httpx                | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/boltuix/bert-lite/bc0e85c1c303ee38a6b4a7276ce7cf6d0581cce5/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-05-17 17:17:22,055 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'HEAD']>
+2026-05-17 17:17:22,056 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-17 17:17:22,056 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-17 17:17:22,056 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-17 17:17:22,126 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'GET']>
+2026-05-17 17:17:22,126 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-17 17:17:22,127 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'GET']>
+2026-05-17 17:17:22,127 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-17 17:17:22,127 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'GET']>
+2026-05-17 17:17:22,276 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 404, b'Not Found', [(b'Content-Type', b'application/json; charset=utf-8'), (b'Content-Length', b'64'), (b'Connection', b'keep-alive'), (b'Date', b'Sun, 17 May 2026 14:17:22 GMT'), (b'ETag', b'W/"40-09f9IAqP13xarAhQxFS2W8rvRkM"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a09cdf2-17927da451b7da616e7a6dab;000cb9a6-7e59-4426-bdcc-8b3917d64dc2'), (b'RateLimit', b'"api";r=999;t=213'), (b'RateLimit-Policy', b'"fixed window";"api";q=1000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Error-Code', b'EntryNotFound'), (b'X-Error-Message', b'additional_chat_templates does not exist on "main"'), (b'X-Cache', b'Error from cloudfront'), (b'Via', b'1.1 930075038957925711fe5dca561b2c04.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'd4ZSicoxenQndoQR4HhoACwbSf2WkpFe9Yvdsipo1TqO7jcaoDOA-A==')])
+2026-05-17 17:17:22,277 | INFO     | httpx                | HTTP Request: GET https://huggingface.co/api/models/boltuix/bert-lite/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-05-17 17:17:22,278 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'GET']>
+2026-05-17 17:17:22,278 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-17 17:17:22,278 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-17 17:17:22,279 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-17 17:17:22,283 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'GET']>
+2026-05-17 17:17:22,283 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-17 17:17:22,283 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'GET']>
+2026-05-17 17:17:22,284 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-17 17:17:22,284 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'GET']>
+2026-05-17 17:17:22,450 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'application/json; charset=utf-8'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'Date', b'Sun, 17 May 2026 14:17:22 GMT'), (b'content-encoding', b'gzip'), (b'ETag', b'W/"3f4-p6e3v60yrWQMyQA/1oVBgtFThWc"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a09cdf2-63ce71a508e2201069e897a1;d0363b02-c0ed-435d-888c-93da6db65e11'), (b'RateLimit', b'"api";r=998;t=213'), (b'RateLimit-Policy', b'"fixed window";"api";q=1000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin'), (b'vary', b'Accept-Encoding'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 930075038957925711fe5dca561b2c04.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'P2FuiIuKZAGjHkOpRtvkyj5X3aKaPx0wYBRZxREaKh7L5XsnpM5Z0w==')])
+2026-05-17 17:17:22,451 | INFO     | httpx                | HTTP Request: GET https://huggingface.co/api/models/boltuix/bert-lite/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-05-17 17:17:22,454 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'GET']>
+2026-05-17 17:17:22,454 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-17 17:17:22,455 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-17 17:17:22,455 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-17 17:17:22,682 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'HEAD']>
+2026-05-17 17:17:22,683 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-17 17:17:22,683 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'HEAD']>
+2026-05-17 17:17:22,683 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-17 17:17:22,698 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'HEAD']>
+2026-05-17 17:17:22,832 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 307, b'Temporary Redirect', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'238'), (b'Connection', b'keep-alive'), (b'Date', b'Sun, 17 May 2026 14:17:22 GMT'), (b'Location', b'/api/resolve-cache/models/boltuix/bert-lite/bc0e85c1c303ee38a6b4a7276ce7cf6d0581cce5/config.json?%2Fboltuix%2Fbert-lite%2Fresolve%2Fmain%2Fconfig.json=&etag=%2281ba83673fa0d07fc98d4ba418715df42ab28a6f%22'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a09cdf2-0113c61e741992461569e222;6bf068bf-7d08-4b4c-9141-cff45acd2e71'), (b'RateLimit', b'"resolvers";r=4997;t=213'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=5000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Vary', b'Origin, Accept'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'bc0e85c1c303ee38a6b4a7276ce7cf6d0581cce5'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'X-Linked-ETag', b'"81ba83673fa0d07fc98d4ba418715df42ab28a6f"'), (b'X-Cache', b'Miss from cloudfront'), (b'Via', b'1.1 930075038957925711fe5dca561b2c04.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'm81Mf1fIm7Wa00RsvKUku4Q6NzGRXKGW3MuHM8r7MB6U_qS806G5Jw==')])
+2026-05-17 17:17:22,833 | INFO     | httpx                | HTTP Request: HEAD https://huggingface.co/boltuix/bert-lite/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-05-17 17:17:22,835 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'HEAD']>
+2026-05-17 17:17:22,835 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-17 17:17:22,835 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-17 17:17:22,835 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-17 17:17:22,837 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'HEAD']>
+2026-05-17 17:17:22,837 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-17 17:17:22,838 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'HEAD']>
+2026-05-17 17:17:22,838 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-17 17:17:22,838 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'HEAD']>
+2026-05-17 17:17:22,864 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Content-Type', b'text/plain; charset=utf-8'), (b'Content-Length', b'587'), (b'Connection', b'keep-alive'), (b'Date', b'Wed, 13 May 2026 12:33:48 GMT'), (b'ETag', b'"81ba83673fa0d07fc98d4ba418715df42ab28a6f"'), (b'X-Powered-By', b'huggingface-moon'), (b'X-Request-Id', b'Root=1-6a046fac-1335b433506b8b384391f3c6;adbfdde3-1218-4a8d-ac5d-f6fb77b28728'), (b'RateLimit', b'"resolvers";r=4998;t=127'), (b'RateLimit-Policy', b'"fixed window";"resolvers";q=5000;w=300'), (b'cross-origin-opener-policy', b'same-origin'), (b'Referrer-Policy', b'strict-origin-when-cross-origin'), (b'Access-Control-Max-Age', b'86400'), (b'Access-Control-Allow-Origin', b'https://huggingface.co'), (b'Access-Control-Expose-Headers', b'X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash'), (b'X-Repo-Commit', b'bc0e85c1c303ee38a6b4a7276ce7cf6d0581cce5'), (b'Accept-Ranges', b'bytes'), (b'X-Hub-Cache', b'MISS'), (b'Content-Disposition', b'inline; filename*=UTF-8\'\'config.json; filename="config.json";'), (b'Content-Security-Policy', b"default-src 'none'; sandbox"), (b'Vary', b'Origin'), (b'X-Cache', b'Hit from cloudfront'), (b'Via', b'1.1 930075038957925711fe5dca561b2c04.cloudfront.net (CloudFront)'), (b'X-Amz-Cf-Pop', b'WAW51-P2'), (b'X-Amz-Cf-Id', b'Do9Ch2Rgkeig7ZEJWqYQSY2J6qb18a4FVj9hNjBD1iG2hGlBoUCYrA=='), (b'Age', b'351814')])
+2026-05-17 17:17:22,865 | INFO     | httpx                | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/boltuix/bert-lite/bc0e85c1c303ee38a6b4a7276ce7cf6d0581cce5/config.json "HTTP/1.1 200 OK"
+2026-05-17 17:17:22,865 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'HEAD']>
+2026-05-17 17:17:22,866 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-17 17:17:22,866 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-17 17:17:22,866 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-17 17:17:30,097 | INFO     | modules.dispatcher   | Dispatcher initialized
+2026-05-17 17:17:30,097 | INFO     | modules.pre_process  | PreProcess initialized
+2026-05-17 17:17:30,097 | INFO     | main_module          | Core modules initialized
+2026-05-17 17:17:30,097 | INFO     | server               | Core service initialized
+2026-05-17 17:17:30,238 | INFO     | uvicorn.error        | Started server process [15258]
+2026-05-17 17:17:30,239 | INFO     | uvicorn.error        | Waiting for application startup.
+2026-05-17 17:17:30,239 | INFO     | uvicorn.error        | Application startup complete.
+2026-05-17 17:17:30,240 | INFO     | uvicorn.error        | Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-05-17 17:20:11,780 | DEBUG    | server               | Received STT POST | lang=pl | text_len=49
+2026-05-17 17:20:11,813 | INFO     | uvicorn.access       | 127.0.0.1:46760 - "POST /core/stt HTTP/1.1" 200
+2026-05-17 17:20:11,833 | INFO     | main_module          | STT input | speaker=Владелец | lang=pl | text_len=49
+2026-05-17 17:20:11,834 | DEBUG    | main_module          | Checking input importance
+2026-05-17 17:20:11,834 | DEBUG    | modules.filter       | Filtering input
+2026-05-17 17:20:11,834 | DEBUG    | modules.filter       | Checking importance
+2026-05-17 17:20:12,698 | DEBUG    | modules.sub_modules.filter_modules.is_important.models.stt_imp_models.models.own_model.transformer.encoder.forward |     Encoder layer input: torch.Size([1, 512, 256]) (with padding mask)
+2026-05-17 17:20:12,698 | DEBUG    | modules.sub_modules.filter_modules.is_important.models.stt_imp_models.models.own_model.transformer.pytorch_attention.attention |       MHA: Q=torch.Size([1, 512, 256]), K=torch.Size([1, 512, 256]), V=torch.Size([1, 512, 256])
+2026-05-17 17:20:12,699 | DEBUG    | modules.sub_modules.filter_modules.is_important.models.stt_imp_models.models.own_model.transformer.pytorch_attention.attention |       Mask applied: torch.Size([1, 1, 1, 512])
+2026-05-17 17:20:12,762 | DEBUG    | modules.sub_modules.filter_modules.is_important.models.stt_imp_models.models.own_model.transformer.encoder.forward |     Encoder layer output: torch.Size([1, 512, 256])
+2026-05-17 17:20:12,828 | DEBUG    | modules.filter       | Importance scores | stt=0.87 cv=0.00 sys=0.00
+2026-05-17 17:20:12,828 | DEBUG    | modules.filter       | Input is important
+2026-05-17 17:20:12,828 | DEBUG    | modules.filter       | Input approved
+2026-05-17 17:20:12,829 | INFO     | main_module          | Input approved by filter
+2026-05-17 17:20:12,829 | DEBUG    | modules.pre_process  | Pre-processing input
+2026-05-17 17:20:12,829 | DEBUG    | modules.pre_process  | Pre-processing completed
+2026-05-17 17:20:12,829 | DEBUG    | main_module          | Pre-processing completed
+2026-05-17 17:20:12,829 | INFO     | main_module          | Sending request to chat service
+2026-05-17 17:20:12,830 | DEBUG    | asyncio              | Using selector: EpollSelector
+2026-05-17 17:20:12,830 | INFO     | client               | Chat request | context_len=1 | timeout=300.0s
+2026-05-17 17:20:12,835 | DEBUG    | httpcore.connection  | connect_tcp.started host='127.0.0.1' port=8001 local_address=None timeout=10.0 socket_options=None
+2026-05-17 17:20:12,838 | DEBUG    | httpcore.connection  | connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x7551746c4c10>
+2026-05-17 17:20:12,839 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'POST']>
+2026-05-17 17:20:12,840 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-17 17:20:12,840 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'POST']>
+2026-05-17 17:20:12,841 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-17 17:20:12,841 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'POST']>
+2026-05-17 17:25:13,009 | DEBUG    | httpcore.http11      | receive_response_headers.failed exception=ReadTimeout(TimeoutError())
+2026-05-17 17:25:13,334 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-17 17:25:13,341 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-17 17:25:13,419 | ERROR    | client               | Chat timeout (>300.0s)
+2026-05-17 17:25:13,420 | WARNING  | main_module          | Chat service returned None
