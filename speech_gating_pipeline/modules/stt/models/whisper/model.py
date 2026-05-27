@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import whisper
 import logging
 
@@ -8,7 +10,11 @@ class Model:
     def __init__(self, model_type: str = "small"):
         logger.info(f"Loading Whisper model | type={model_type}")
         try:
-            self.model = whisper.load_model(model_type, device="cpu")
+            self.model = whisper.load_model(
+                model_type, 
+                device="cpu",
+                download_root=Path(__file__).parent
+                ).float()
             logger.info(f"Whisper model loaded | type={model_type}")
         except Exception as e:
             logger.error(f"Whisper load error: {type(e).__name__}: {e}", exc_info=True)
