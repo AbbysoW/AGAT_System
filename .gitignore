@@ -16,3 +16,9 @@ __pycache__/
 **/snakers4_silero-vad_*/
 
 CACHEDIR.TAG
+.env
+main.py
+temp.py
+tenp.py
+test.py
+utils

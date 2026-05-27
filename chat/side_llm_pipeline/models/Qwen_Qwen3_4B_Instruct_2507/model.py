@@ -2,11 +2,12 @@ import os
 import logging
 from pathlib import Path
 
+from dotenv import load_dotenv
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-logger = logging.getLogger(__name__)
+load_dotenv()
 
-os.environ["HF_TOKEN"] = "REMOVED_SECRET"
+logger = logging.getLogger(__name__)
 
 
 class Model:

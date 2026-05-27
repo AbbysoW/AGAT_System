@@ -1,10 +1,11 @@
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
 from transformers import AutoTokenizer, AutoModel
 import torch
 
-os.environ["HF_TOKEN"] = "REMOVED_SECRET"
+load_dotenv()
 
 
 class Model:
