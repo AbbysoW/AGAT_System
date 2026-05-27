@@ -1,0 +1,197 @@
+2026-05-27 14:57:21,558 | INFO     | server               | ==================================================
+2026-05-27 14:57:21,558 | INFO     | server               | STT SERVICE MODULE LOADING
+2026-05-27 14:57:21,558 | INFO     | server               | ==================================================
+2026-05-27 14:57:21,559 | INFO     | uvicorn.error        | Started server process [9421]
+2026-05-27 14:57:21,560 | INFO     | uvicorn.error        | Waiting for application startup.
+2026-05-27 14:57:21,560 | INFO     | server               | ==================================================
+2026-05-27 14:57:21,560 | INFO     | server               | STT SERVICE LIFESPAN: STARTUP PHASE
+2026-05-27 14:57:21,560 | INFO     | server               | ==================================================
+2026-05-27 14:57:21,560 | DEBUG    | server               | Phase 1: Initializing STT module...
+2026-05-27 14:57:21,560 | DEBUG    | server               | Timestamp: 2026-05-27 14:57:21
+2026-05-27 14:57:21,560 | INFO     | speech_gating_pipeline | Initializing SpeechGatingPipeline
+2026-05-27 14:57:21,561 | DEBUG    | speech_gating_pipeline | Initializing VAD (Voice Activity Detection)...
+2026-05-27 14:57:21,561 | INFO     | modules.vad.volume_detector.volume_detector | Initializing VolumeDetector | samplerate=16000Hz | threshold=0.2 | silence_dur=3.0s | block_dur=0.1s
+2026-05-27 14:57:21,561 | DEBUG    | modules.vad.volume_detector.volume_detector | VolumeDetector initialized successfully
+2026-05-27 14:57:21,819 | DEBUG    | speech_gating_pipeline | ✓ VAD initialized successfully
+2026-05-27 14:57:21,819 | DEBUG    | speech_gating_pipeline | Loading Stt speech recognition model...
+2026-05-27 14:57:21,819 | INFO     | modules.stt.models.whisper.model | Loading Whisper model | type=medium
+2026-05-27 14:57:32,211 | INFO     | modules.stt.models.whisper.model | Whisper model loaded | type=medium
+2026-05-27 14:57:32,211 | DEBUG    | speech_gating_pipeline | ✓ STT model loaded successfully
+2026-05-27 14:57:32,211 | INFO     | speech_gating_pipeline | ✓ SpeechGatingPipeline module initialized successfully
+2026-05-27 14:57:32,211 | INFO     | server               | ✓ STT instance created | init_time=10.651s
+2026-05-27 14:57:32,212 | DEBUG    | server               | STT configuration | samplerate=16000Hz | models_loaded=2
+2026-05-27 14:57:32,212 | DEBUG    | server               | Phase 2: Creating worker task...
+2026-05-27 14:57:32,212 | INFO     | server               | ✓ STT worker task created | task_id=Task-3 | creation_time=0.000s
+2026-05-27 14:57:32,212 | DEBUG    | server               | Task state | done=False | cancelled=False
+2026-05-27 14:57:32,212 | INFO     | server               | ✓ STT SERVICE READY | total_startup_time=10.652s
+2026-05-27 14:57:32,212 | DEBUG    | server               | Service status | listening=True | workers_active=1 | http_client_ready=True
+2026-05-27 14:57:32,212 | INFO     | server               | ==================================================
+2026-05-27 14:57:32,212 | INFO     | server               | SERVICE READY TO ACCEPT CONNECTIONS
+2026-05-27 14:57:32,213 | INFO     | server               | ==================================================
+2026-05-27 14:57:32,213 | INFO     | server               | 🔄 STT worker task started
+2026-05-27 14:57:32,213 | DEBUG    | server               | Worker initialization | state=ready | listening=False
+2026-05-27 14:57:32,213 | DEBUG    | server               | Worker iteration #1 | uptime_check | state=listening
+2026-05-27 14:57:32,213 | DEBUG    | server               | [Iteration #1] Waiting for speech input...
+2026-05-27 14:57:32,214 | INFO     | speech_gating_pipeline | 🎤 SpeechGatingPipeline listening started
+2026-05-27 14:57:32,214 | INFO     | uvicorn.error        | Application startup complete.
+2026-05-27 14:57:32,214 | DEBUG    | speech_gating_pipeline | Listen attempt #1
+2026-05-27 14:57:32,214 | INFO     | uvicorn.error        | Uvicorn running on http://127.0.0.1:8004 (Press CTRL+C to quit)
+2026-05-27 14:57:32,215 | DEBUG    | speech_gating_pipeline | Waiting for audio capture...
+2026-05-27 14:57:32,215 | INFO     | modules.vad.vad      | 🎤 VAD listening started
+2026-05-27 14:57:32,215 | DEBUG    | modules.vad.volume_detector.volume_detector | VolumeDetector listening started
+2026-05-27 14:57:32,216 | DEBUG    | modules.vad.volume_detector.volume_detector | Opening audio stream | samplerate=16000Hz | blocksize=1600
+2026-05-27 14:57:32,243 | DEBUG    | modules.vad.volume_detector.volume_detector | Audio stream opened successfully
+2026-05-27 14:57:35,504 | DEBUG    | modules.vad.volume_detector.volume_detector | Speech detected | volume=0.381 > threshold=0.2
+2026-05-27 14:57:35,506 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.381 | blocks=1 | duration=0.10s
+2026-05-27 14:57:35,632 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.305 | blocks=2 | duration=0.20s
+2026-05-27 14:57:35,760 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.318 | blocks=3 | duration=0.30s
+2026-05-27 14:57:35,760 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.290 | blocks=4 | duration=0.40s
+2026-05-27 14:57:35,888 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.289 | blocks=5 | duration=0.50s
+2026-05-27 14:57:36,016 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.325 | blocks=6 | duration=0.60s
+2026-05-27 14:57:36,144 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.321 | blocks=7 | duration=0.70s
+2026-05-27 14:57:36,145 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.305 | blocks=8 | duration=0.80s
+2026-05-27 14:57:36,272 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.308 | blocks=9 | duration=0.90s
+2026-05-27 14:57:36,400 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.326 | blocks=10 | duration=1.00s
+2026-05-27 14:57:36,528 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.812 | blocks=11 | duration=1.10s
+2026-05-27 14:57:36,656 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.713 | blocks=12 | duration=1.20s
+2026-05-27 14:57:36,656 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.812 | blocks=13 | duration=1.30s
+2026-05-27 14:57:36,784 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.703 | blocks=14 | duration=1.40s
+2026-05-27 14:57:36,912 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.820 | blocks=15 | duration=1.50s
+2026-05-27 14:57:37,040 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.763 | blocks=16 | duration=1.60s
+2026-05-27 14:57:37,041 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.774 | blocks=17 | duration=1.70s
+2026-05-27 14:57:37,168 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.669 | blocks=18 | duration=1.80s
+2026-05-27 14:57:37,296 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.803 | blocks=19 | duration=1.90s
+2026-05-27 14:57:37,424 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.710 | blocks=20 | duration=2.00s
+2026-05-27 14:57:37,552 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.805 | blocks=21 | duration=2.10s
+2026-05-27 14:57:37,553 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.633 | blocks=22 | duration=2.20s
+2026-05-27 14:57:37,680 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.781 | blocks=23 | duration=2.30s
+2026-05-27 14:57:37,808 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.559 | blocks=24 | duration=2.40s
+2026-05-27 14:57:37,936 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.726 | blocks=25 | duration=2.50s
+2026-05-27 14:57:37,937 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.626 | blocks=26 | duration=2.60s
+2026-05-27 14:57:38,064 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.791 | blocks=27 | duration=2.70s
+2026-05-27 14:57:38,192 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.609 | blocks=28 | duration=2.80s
+2026-05-27 14:57:38,320 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.735 | blocks=29 | duration=2.90s
+2026-05-27 14:57:38,448 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.598 | blocks=30 | duration=3.00s
+2026-05-27 14:57:38,449 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.755 | blocks=31 | duration=3.10s
+2026-05-27 14:57:38,576 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.649 | blocks=32 | duration=3.20s
+2026-05-27 14:57:38,704 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.728 | blocks=33 | duration=3.30s
+2026-05-27 14:57:38,832 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.704 | blocks=34 | duration=3.40s
+2026-05-27 14:57:38,960 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.409 | blocks=35 | duration=3.50s
+2026-05-27 14:57:38,960 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.297 | blocks=36 | duration=3.60s
+2026-05-27 14:57:39,088 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.325 | blocks=37 | duration=3.70s
+2026-05-27 14:57:39,216 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.288 | blocks=38 | duration=3.80s
+2026-05-27 14:57:39,344 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.290 | blocks=39 | duration=3.90s
+2026-05-27 14:57:39,344 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.315 | blocks=40 | duration=4.00s
+2026-05-27 14:57:39,472 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.309 | blocks=41 | duration=4.10s
+2026-05-27 14:57:39,600 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.279 | blocks=42 | duration=4.20s
+2026-05-27 14:57:39,728 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.293 | blocks=43 | duration=4.30s
+2026-05-27 14:57:39,856 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.308 | blocks=44 | duration=4.40s
+2026-05-27 14:57:39,857 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.308 | blocks=45 | duration=4.50s
+2026-05-27 14:57:39,984 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.308 | blocks=46 | duration=4.60s
+2026-05-27 14:57:40,112 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.294 | blocks=47 | duration=4.70s
+2026-05-27 14:57:40,240 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.306 | blocks=48 | duration=4.80s
+2026-05-27 14:57:40,241 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.294 | blocks=49 | duration=4.90s
+2026-05-27 14:57:40,368 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.308 | blocks=50 | duration=5.00s
+2026-05-27 14:57:40,496 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.297 | blocks=51 | duration=5.10s
+2026-05-27 14:57:40,624 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.297 | blocks=52 | duration=5.20s
+2026-05-27 14:57:40,753 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.307 | blocks=53 | duration=5.30s
+2026-05-27 14:57:40,755 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.280 | blocks=54 | duration=5.40s
+2026-05-27 14:57:40,880 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.309 | blocks=55 | duration=5.50s
+2026-05-27 14:57:41,008 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.302 | blocks=56 | duration=5.60s
+2026-05-27 14:57:41,136 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording audio block | volume=0.266 | blocks=57 | duration=5.70s
+2026-05-27 14:57:41,137 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:41,137 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=0.10s | threshold=3.0s
+2026-05-27 14:57:41,264 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:41,265 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=0.20s | threshold=3.0s
+2026-05-27 14:57:41,393 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:41,393 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=0.30s | threshold=3.0s
+2026-05-27 14:57:41,521 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:41,521 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=0.40s | threshold=3.0s
+2026-05-27 14:57:41,649 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:41,649 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=0.50s | threshold=3.0s
+2026-05-27 14:57:41,649 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:41,649 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=0.60s | threshold=3.0s
+2026-05-27 14:57:41,777 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:41,777 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=0.70s | threshold=3.0s
+2026-05-27 14:57:41,905 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:41,905 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=0.80s | threshold=3.0s
+2026-05-27 14:57:42,033 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:42,033 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=0.90s | threshold=3.0s
+2026-05-27 14:57:42,160 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:42,161 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=1.00s | threshold=3.0s
+2026-05-27 14:57:42,161 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:42,161 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=1.10s | threshold=3.0s
+2026-05-27 14:57:42,289 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:42,289 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=1.20s | threshold=3.0s
+2026-05-27 14:57:42,416 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:42,417 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=1.30s | threshold=3.0s
+2026-05-27 14:57:42,544 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:42,545 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=1.40s | threshold=3.0s
+2026-05-27 14:57:42,545 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:42,545 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=1.50s | threshold=3.0s
+2026-05-27 14:57:42,673 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:42,673 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=1.60s | threshold=3.0s
+2026-05-27 14:57:42,801 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:42,801 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=1.70s | threshold=3.0s
+2026-05-27 14:57:42,929 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:42,929 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=1.80s | threshold=3.0s
+2026-05-27 14:57:43,057 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:43,057 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=1.90s | threshold=3.0s
+2026-05-27 14:57:43,057 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:43,058 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=2.00s | threshold=3.0s
+2026-05-27 14:57:43,185 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:43,185 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=2.10s | threshold=3.0s
+2026-05-27 14:57:43,313 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:43,313 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=2.20s | threshold=3.0s
+2026-05-27 14:57:43,441 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:43,441 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=2.30s | threshold=3.0s
+2026-05-27 14:57:43,441 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:43,442 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=2.40s | threshold=3.0s
+2026-05-27 14:57:43,569 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:43,569 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=2.50s | threshold=3.0s
+2026-05-27 14:57:43,697 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:43,698 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=2.60s | threshold=3.0s
+2026-05-27 14:57:43,825 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:43,825 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=2.70s | threshold=3.0s
+2026-05-27 14:57:43,953 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:43,953 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=2.80s | threshold=3.0s
+2026-05-27 14:57:43,954 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:43,954 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=2.90s | threshold=3.0s
+2026-05-27 14:57:44,081 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.000 <= threshold=0.2
+2026-05-27 14:57:44,081 | DEBUG    | modules.vad.volume_detector.volume_detector | Recording silence | silence_duration=3.00s | threshold=3.0s
+2026-05-27 14:57:44,082 | INFO     | modules.vad.volume_detector.volume_detector | ✓ Speech ended by silence | silence_time=3.00s
+2026-05-27 14:57:44,213 | INFO     | modules.vad.volume_detector.volume_detector | ✓ Audio capture complete | duration=8.70s | samples=139200 | blocks=87
+2026-05-27 14:57:44,214 | INFO     | modules.vad.volume_detector.volume_detector | Volume statistics | min=0.000 | max=0.820 | threshold=0.2
+2026-05-27 14:57:44,214 | DEBUG    | modules.vad.volume_detector.volume_detector | Total blocks processed: 116
+2026-05-27 14:57:44,214 | INFO     | modules.vad.speach_detector.speach_detector | Calculating speech probability...
+2026-05-27 14:57:44,215 | DEBUG    | modules.vad.speach_detector.models.snakers4_silero_vad.model | Preprocessing audio of shape: (139200,)
+2026-05-27 14:57:44,216 | DEBUG    | modules.vad.speach_detector.models.snakers4_silero_vad.model | Converted audio to tensor of shape: torch.Size([139200])
+2026-05-27 14:57:44,217 | DEBUG    | modules.vad.speach_detector.models.snakers4_silero_vad.model | Normalized audio tensor of shape: torch.Size([139200])
+2026-05-27 14:57:44,217 | DEBUG    | modules.vad.speach_detector.models.snakers4_silero_vad.model | Preprocessed audio shape: torch.Size([139200])
+2026-05-27 14:57:44,217 | DEBUG    | modules.vad.speach_detector.models.snakers4_silero_vad.model | Calculating speech probability for tensor of shape: torch.Size([139200])
+2026-05-27 14:57:44,218 | DEBUG    | modules.vad.speach_detector.models.snakers4_silero_vad.model | Chunk size: 512.0 | Sample rate: 16000 | Sample: 32e-3ms
+2026-05-27 14:57:44,218 | WARNING  | speech_gating_pipeline | ⚠ TypeError in listen loop (attempt #1): 'float' object cannot be interpreted as an integer - Continuing...
+2026-05-27 14:57:44,218 | DEBUG    | speech_gating_pipeline | Listen attempt #2
+2026-05-27 14:57:44,218 | DEBUG    | speech_gating_pipeline | Waiting for audio capture...
+2026-05-27 14:57:44,218 | INFO     | modules.vad.vad      | 🎤 VAD listening started
+2026-05-27 14:57:44,218 | DEBUG    | modules.vad.volume_detector.volume_detector | VolumeDetector listening started
+2026-05-27 14:57:44,219 | DEBUG    | modules.vad.volume_detector.volume_detector | Opening audio stream | samplerate=16000Hz | blocksize=1600
+2026-05-27 14:57:44,244 | DEBUG    | modules.vad.volume_detector.volume_detector | Audio stream opened successfully
+2026-05-27 15:00:07,944 | INFO     | uvicorn.error        | Shutting down
+2026-05-27 15:00:08,045 | INFO     | uvicorn.error        | Waiting for application shutdown.
+2026-05-27 15:00:08,046 | INFO     | server               | ==================================================
+2026-05-27 15:00:08,046 | INFO     | server               | STT SERVICE LIFESPAN: SHUTDOWN PHASE
+2026-05-27 15:00:08,046 | INFO     | server               | ==================================================
+2026-05-27 15:00:08,046 | INFO     | server               | 🛑 STT service shutting down...
+2026-05-27 15:00:08,046 | DEBUG    | server               | Phase 1: Stopping worker task...
+2026-05-27 15:00:08,047 | DEBUG    | server               | Worker task cancellation signal sent | task=Task-3
+2026-05-27 15:00:08,047 | DEBUG    | server               | Waiting for worker task to complete cancellation...
+2026-05-27 15:00:08,047 | INFO     | server               | 🛑 STT worker received cancellation signal
+2026-05-27 15:00:08,047 | DEBUG    | server               | Worker stats at cancellation | iteration=#1 | total_audio=0 | errors=0
+2026-05-27 15:00:08,048 | INFO     | server               | STT worker task terminated gracefully | iterations=1 | audio_processed=0 | errors=0
+2026-05-27 15:00:08,048 | DEBUG    | server               | Phase 2: Closing HTTP client...
+2026-05-27 15:00:08,068 | DEBUG    | server               | ✓ HTTP client closed | close_time=0.020s
+2026-05-27 15:00:08,068 | INFO     | server               | ✓ STT SERVICE STOPPED | shutdown_time=0.022s
+2026-05-27 15:00:08,069 | INFO     | server               | ==================================================
+2026-05-27 15:00:08,069 | INFO     | uvicorn.error        | Application shutdown complete.
+2026-05-27 15:00:08,069 | INFO     | uvicorn.error        | Finished server process [9421]

@@ -1,0 +1,154 @@
+2026-05-27 14:18:07,425 | INFO     | server               | ==================================================
+2026-05-27 14:18:07,425 | INFO     | server               | STT SERVICE MODULE LOADING
+2026-05-27 14:18:07,426 | INFO     | server               | ==================================================
+2026-05-27 14:18:07,427 | INFO     | uvicorn.error        | Started server process [7986]
+2026-05-27 14:18:07,427 | INFO     | uvicorn.error        | Waiting for application startup.
+2026-05-27 14:18:07,427 | INFO     | server               | ==================================================
+2026-05-27 14:18:07,428 | INFO     | server               | STT SERVICE LIFESPAN: STARTUP PHASE
+2026-05-27 14:18:07,428 | INFO     | server               | ==================================================
+2026-05-27 14:18:07,428 | DEBUG    | server               | Phase 1: Initializing STT module...
+2026-05-27 14:18:07,428 | DEBUG    | server               | Timestamp: 2026-05-27 14:18:07
+2026-05-27 14:18:07,428 | INFO     | speech_gating_pipeline | Initializing SpeechGatingPipeline
+2026-05-27 14:18:07,428 | DEBUG    | speech_gating_pipeline | Initializing VAD (Voice Activity Detection)...
+2026-05-27 14:18:07,429 | INFO     | modules.vad.volume_detector.volume_detector | Initializing VolumeDetector | samplerate=16000Hz | threshold=0.2 | silence_dur=3.0s | block_dur=0.1s
+2026-05-27 14:18:07,429 | DEBUG    | modules.vad.volume_detector.volume_detector | VolumeDetector initialized successfully
+2026-05-27 14:18:21,675 | DEBUG    | speech_gating_pipeline | ✓ VAD initialized successfully
+2026-05-27 14:18:21,676 | DEBUG    | speech_gating_pipeline | Loading Stt speech recognition model...
+2026-05-27 14:18:21,676 | INFO     | modules.stt.models.whisper.model | Loading Whisper model | type=medium
+2026-05-27 14:18:35,760 | INFO     | modules.stt.models.whisper.model | Whisper model loaded | type=medium
+2026-05-27 14:18:35,761 | DEBUG    | speech_gating_pipeline | ✓ STT model loaded successfully
+2026-05-27 14:18:35,761 | INFO     | speech_gating_pipeline | ✓ SpeechGatingPipeline module initialized successfully
+2026-05-27 14:18:35,761 | INFO     | server               | ✓ STT instance created | init_time=28.333s
+2026-05-27 14:18:35,761 | DEBUG    | server               | STT configuration | samplerate=16000Hz | models_loaded=2
+2026-05-27 14:18:35,761 | DEBUG    | server               | Phase 2: Creating worker task...
+2026-05-27 14:18:35,761 | INFO     | server               | ✓ STT worker task created | task_id=Task-3 | creation_time=0.000s
+2026-05-27 14:18:35,761 | DEBUG    | server               | Task state | done=False | cancelled=False
+2026-05-27 14:18:35,762 | INFO     | server               | ✓ STT SERVICE READY | total_startup_time=28.334s
+2026-05-27 14:18:35,762 | DEBUG    | server               | Service status | listening=True | workers_active=1 | http_client_ready=True
+2026-05-27 14:18:35,762 | INFO     | server               | ==================================================
+2026-05-27 14:18:35,762 | INFO     | server               | SERVICE READY TO ACCEPT CONNECTIONS
+2026-05-27 14:18:35,762 | INFO     | server               | ==================================================
+2026-05-27 14:18:35,762 | INFO     | server               | 🔄 STT worker task started
+2026-05-27 14:18:35,762 | DEBUG    | server               | Worker initialization | state=ready | listening=False
+2026-05-27 14:18:35,762 | DEBUG    | server               | Worker iteration #1 | uptime_check | state=listening
+2026-05-27 14:18:35,762 | DEBUG    | server               | [Iteration #1] Waiting for speech input...
+2026-05-27 14:18:35,763 | ERROR    | server               | ✗ STT loop error [Iteration #1]: AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 45, in stt_worker
+    speach_info = await asyncio.to_thread(stt.listen)
+AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+2026-05-27 14:18:35,763 | DEBUG    | server               | Error recovery | total_errors=1 | waiting 1s before retry...
+2026-05-27 14:18:35,764 | INFO     | uvicorn.error        | Application startup complete.
+2026-05-27 14:18:35,764 | INFO     | uvicorn.error        | Uvicorn running on http://127.0.0.1:8004 (Press CTRL+C to quit)
+2026-05-27 14:18:36,765 | DEBUG    | server               | Worker iteration #2 | uptime_check | state=listening
+2026-05-27 14:18:36,765 | DEBUG    | server               | [Iteration #2] Waiting for speech input...
+2026-05-27 14:18:36,765 | ERROR    | server               | ✗ STT loop error [Iteration #2]: AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 45, in stt_worker
+    speach_info = await asyncio.to_thread(stt.listen)
+AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+2026-05-27 14:18:36,767 | DEBUG    | server               | Error recovery | total_errors=2 | waiting 1s before retry...
+2026-05-27 14:18:37,767 | DEBUG    | server               | Worker iteration #3 | uptime_check | state=listening
+2026-05-27 14:18:37,768 | DEBUG    | server               | [Iteration #3] Waiting for speech input...
+2026-05-27 14:18:37,768 | ERROR    | server               | ✗ STT loop error [Iteration #3]: AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 45, in stt_worker
+    speach_info = await asyncio.to_thread(stt.listen)
+AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+2026-05-27 14:18:37,769 | DEBUG    | server               | Error recovery | total_errors=3 | waiting 1s before retry...
+2026-05-27 14:18:38,771 | DEBUG    | server               | Worker iteration #4 | uptime_check | state=listening
+2026-05-27 14:18:38,771 | DEBUG    | server               | [Iteration #4] Waiting for speech input...
+2026-05-27 14:18:38,773 | ERROR    | server               | ✗ STT loop error [Iteration #4]: AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 45, in stt_worker
+    speach_info = await asyncio.to_thread(stt.listen)
+AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+2026-05-27 14:18:38,777 | DEBUG    | server               | Error recovery | total_errors=4 | waiting 1s before retry...
+2026-05-27 14:18:39,778 | DEBUG    | server               | Worker iteration #5 | uptime_check | state=listening
+2026-05-27 14:18:39,778 | DEBUG    | server               | [Iteration #5] Waiting for speech input...
+2026-05-27 14:18:39,778 | ERROR    | server               | ✗ STT loop error [Iteration #5]: AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 45, in stt_worker
+    speach_info = await asyncio.to_thread(stt.listen)
+AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+2026-05-27 14:18:39,780 | DEBUG    | server               | Error recovery | total_errors=5 | waiting 1s before retry...
+2026-05-27 14:18:40,781 | DEBUG    | server               | Worker iteration #6 | uptime_check | state=listening
+2026-05-27 14:18:40,781 | DEBUG    | server               | [Iteration #6] Waiting for speech input...
+2026-05-27 14:18:40,781 | ERROR    | server               | ✗ STT loop error [Iteration #6]: AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 45, in stt_worker
+    speach_info = await asyncio.to_thread(stt.listen)
+AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+2026-05-27 14:18:40,783 | DEBUG    | server               | Error recovery | total_errors=6 | waiting 1s before retry...
+2026-05-27 14:18:41,784 | DEBUG    | server               | Worker iteration #7 | uptime_check | state=listening
+2026-05-27 14:18:41,784 | DEBUG    | server               | [Iteration #7] Waiting for speech input...
+2026-05-27 14:18:41,785 | ERROR    | server               | ✗ STT loop error [Iteration #7]: AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 45, in stt_worker
+    speach_info = await asyncio.to_thread(stt.listen)
+AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+2026-05-27 14:18:41,786 | DEBUG    | server               | Error recovery | total_errors=7 | waiting 1s before retry...
+2026-05-27 14:18:42,788 | DEBUG    | server               | Worker iteration #8 | uptime_check | state=listening
+2026-05-27 14:18:42,789 | DEBUG    | server               | [Iteration #8] Waiting for speech input...
+2026-05-27 14:18:42,789 | ERROR    | server               | ✗ STT loop error [Iteration #8]: AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 45, in stt_worker
+    speach_info = await asyncio.to_thread(stt.listen)
+AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+2026-05-27 14:18:42,790 | DEBUG    | server               | Error recovery | total_errors=8 | waiting 1s before retry...
+2026-05-27 14:18:43,792 | DEBUG    | server               | Worker iteration #9 | uptime_check | state=listening
+2026-05-27 14:18:43,792 | DEBUG    | server               | [Iteration #9] Waiting for speech input...
+2026-05-27 14:18:43,793 | ERROR    | server               | ✗ STT loop error [Iteration #9]: AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 45, in stt_worker
+    speach_info = await asyncio.to_thread(stt.listen)
+AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+2026-05-27 14:18:43,794 | DEBUG    | server               | Error recovery | total_errors=9 | waiting 1s before retry...
+2026-05-27 14:18:44,795 | DEBUG    | server               | Worker iteration #10 | uptime_check | state=listening
+2026-05-27 14:18:44,795 | DEBUG    | server               | [Iteration #10] Waiting for speech input...
+2026-05-27 14:18:44,795 | ERROR    | server               | ✗ STT loop error [Iteration #10]: AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 45, in stt_worker
+    speach_info = await asyncio.to_thread(stt.listen)
+AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+2026-05-27 14:18:44,797 | DEBUG    | server               | Error recovery | total_errors=10 | waiting 1s before retry...
+2026-05-27 14:18:45,798 | DEBUG    | server               | Worker iteration #11 | uptime_check | state=listening
+2026-05-27 14:18:45,798 | DEBUG    | server               | [Iteration #11] Waiting for speech input...
+2026-05-27 14:18:45,798 | ERROR    | server               | ✗ STT loop error [Iteration #11]: AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 45, in stt_worker
+    speach_info = await asyncio.to_thread(stt.listen)
+AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+2026-05-27 14:18:45,800 | DEBUG    | server               | Error recovery | total_errors=11 | waiting 1s before retry...
+2026-05-27 14:18:46,801 | DEBUG    | server               | Worker iteration #12 | uptime_check | state=listening
+2026-05-27 14:18:46,801 | DEBUG    | server               | [Iteration #12] Waiting for speech input...
+2026-05-27 14:18:46,802 | ERROR    | server               | ✗ STT loop error [Iteration #12]: AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 45, in stt_worker
+    speach_info = await asyncio.to_thread(stt.listen)
+AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+2026-05-27 14:18:46,803 | DEBUG    | server               | Error recovery | total_errors=12 | waiting 1s before retry...
+2026-05-27 14:18:47,804 | DEBUG    | server               | Worker iteration #13 | uptime_check | state=listening
+2026-05-27 14:18:47,805 | DEBUG    | server               | [Iteration #13] Waiting for speech input...
+2026-05-27 14:18:47,805 | ERROR    | server               | ✗ STT loop error [Iteration #13]: AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 45, in stt_worker
+    speach_info = await asyncio.to_thread(stt.listen)
+AttributeError: 'SpeechGatingPipeline' object has no attribute 'listen'
+2026-05-27 14:18:47,806 | DEBUG    | server               | Error recovery | total_errors=13 | waiting 1s before retry...
+2026-05-27 14:18:48,529 | INFO     | uvicorn.error        | Shutting down
+2026-05-27 14:18:48,630 | INFO     | uvicorn.error        | Waiting for application shutdown.
+2026-05-27 14:18:48,630 | INFO     | server               | ==================================================
+2026-05-27 14:18:48,630 | INFO     | server               | STT SERVICE LIFESPAN: SHUTDOWN PHASE
+2026-05-27 14:18:48,630 | INFO     | server               | ==================================================
+2026-05-27 14:18:48,631 | INFO     | server               | 🛑 STT service shutting down...
+2026-05-27 14:18:48,631 | DEBUG    | server               | Phase 1: Stopping worker task...
+2026-05-27 14:18:48,631 | DEBUG    | server               | Worker task cancellation signal sent | task=Task-3
+2026-05-27 14:18:48,631 | DEBUG    | server               | Waiting for worker task to complete cancellation...
+2026-05-27 14:18:48,632 | INFO     | server               | STT worker task terminated gracefully | iterations=13 | audio_processed=0 | errors=13
+2026-05-27 14:18:48,632 | DEBUG    | server               | Phase 2: Closing HTTP client...
+2026-05-27 14:18:48,650 | DEBUG    | server               | ✓ HTTP client closed | close_time=0.018s
+2026-05-27 14:18:48,650 | INFO     | server               | ✓ STT SERVICE STOPPED | shutdown_time=0.019s
+2026-05-27 14:18:48,650 | INFO     | server               | ==================================================
+2026-05-27 14:18:48,651 | INFO     | uvicorn.error        | Application shutdown complete.
+2026-05-27 14:18:48,651 | INFO     | uvicorn.error        | Finished server process [7986]

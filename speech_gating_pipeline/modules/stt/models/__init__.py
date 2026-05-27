@@ -1,0 +1,1 @@
+from .whisper.model import Model as Whisper

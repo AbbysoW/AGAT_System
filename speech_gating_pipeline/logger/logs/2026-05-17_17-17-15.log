@@ -1,0 +1,58 @@
+2026-05-17 17:17:15,295 | INFO     | uvicorn.error        | Started server process [15270]
+2026-05-17 17:17:15,296 | INFO     | uvicorn.error        | Waiting for application startup.
+2026-05-17 17:17:15,297 | INFO     | server               | STT server starting
+2026-05-17 17:17:15,297 | INFO     | stt_module           | STT init | samplerate=16000
+2026-05-17 17:17:15,297 | DEBUG    | pipeline.vad         | VAD init | samplerate=16000 threshold=0.2
+2026-05-17 17:17:15,297 | DEBUG    | stt_module           | VAD initialized
+2026-05-17 17:17:15,297 | INFO     | pipeline.models.Whisper.model | Loading Whisper model | type=medium
+2026-05-17 17:17:31,048 | INFO     | pipeline.models.Whisper.model | Whisper model loaded | type=medium
+2026-05-17 17:17:31,049 | DEBUG    | stt_module           | Whisper model loaded
+2026-05-17 17:17:31,049 | INFO     | server               | STT instance created
+2026-05-17 17:17:31,049 | INFO     | server               | STT worker task created
+2026-05-17 17:17:31,049 | INFO     | server               | STT worker started
+2026-05-17 17:17:31,049 | DEBUG    | server               | STT listening...
+2026-05-17 17:17:31,050 | INFO     | stt_module           | STT listen started
+2026-05-17 17:17:31,050 | INFO     | uvicorn.error        | Application startup complete.
+2026-05-17 17:17:31,050 | DEBUG    | pipeline.vad         | VAD listening started
+2026-05-17 17:17:31,051 | INFO     | uvicorn.error        | Uvicorn running on http://127.0.0.1:8004 (Press CTRL+C to quit)
+2026-05-17 17:17:31,066 | DEBUG    | pipeline.vad         | Audio stream opened
+2026-05-17 17:19:59,558 | DEBUG    | pipeline.vad         | Speech ended by silence
+2026-05-17 17:19:59,866 | INFO     | pipeline.vad         | Audio captured | duration=3.80s size=60800
+2026-05-17 17:19:59,870 | DEBUG    | stt_module           | Audio captured | size=60800
+2026-05-17 17:19:59,872 | DEBUG    | stt_module           | Whisper processing started
+2026-05-17 17:19:59,874 | DEBUG    | pipeline.models.Whisper.model | Whisper transcribing
+2026-05-17 17:20:11,661 | DEBUG    | pipeline.models.Whisper.model | Whisper transcription complete
+2026-05-17 17:20:11,661 | DEBUG    | stt_module           | Whisper result | lang=pl | text_len=49
+2026-05-17 17:20:11,661 | DEBUG    | stt_module           | Speech confidence=0.79
+2026-05-17 17:20:11,661 | INFO     | stt_module           | Speech recognized | lang=pl | text_len=49
+2026-05-17 17:20:11,667 | INFO     | server               | Speech received | text_len=49
+2026-05-17 17:20:11,668 | DEBUG    | client               | Sending speech to core | text_len=49
+2026-05-17 17:20:11,751 | DEBUG    | httpcore.connection  | connect_tcp.started host='127.0.0.1' port=8000 local_address=None timeout=2.0 socket_options=None
+2026-05-17 17:20:11,753 | DEBUG    | httpcore.connection  | connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x78e48cc695a0>
+2026-05-17 17:20:11,754 | DEBUG    | httpcore.http11      | send_request_headers.started request=<Request [b'POST']>
+2026-05-17 17:20:11,754 | DEBUG    | httpcore.http11      | send_request_headers.complete
+2026-05-17 17:20:11,754 | DEBUG    | httpcore.http11      | send_request_body.started request=<Request [b'POST']>
+2026-05-17 17:20:11,755 | DEBUG    | httpcore.http11      | send_request_body.complete
+2026-05-17 17:20:11,756 | DEBUG    | httpcore.http11      | receive_response_headers.started request=<Request [b'POST']>
+2026-05-17 17:20:11,834 | DEBUG    | httpcore.http11      | receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'date', b'Sun, 17 May 2026 14:20:11 GMT'), (b'server', b'uvicorn'), (b'content-length', b'15'), (b'content-type', b'application/json')])
+2026-05-17 17:20:11,835 | INFO     | httpx                | HTTP Request: POST http://127.0.0.1:8000/core/stt "HTTP/1.1 200 OK"
+2026-05-17 17:20:11,859 | DEBUG    | httpcore.http11      | receive_response_body.started request=<Request [b'POST']>
+2026-05-17 17:20:11,866 | DEBUG    | httpcore.http11      | receive_response_body.complete
+2026-05-17 17:20:11,887 | DEBUG    | httpcore.http11      | response_closed.started
+2026-05-17 17:20:11,904 | DEBUG    | httpcore.http11      | response_closed.complete
+2026-05-17 17:20:11,931 | INFO     | client               | Speech sent to core | status=200
+2026-05-17 17:20:11,932 | DEBUG    | server               | Speech sent to core
+2026-05-17 17:20:11,932 | DEBUG    | server               | STT listening...
+2026-05-17 17:20:12,136 | INFO     | stt_module           | STT listen started
+2026-05-17 17:20:12,195 | DEBUG    | pipeline.vad         | VAD listening started
+2026-05-17 17:20:12,237 | DEBUG    | pipeline.vad         | Audio stream opened
+2026-05-17 17:20:13,574 | DEBUG    | pipeline.vad         | Speech ended by silence
+2026-05-17 17:20:13,706 | INFO     | pipeline.vad         | Audio captured | duration=1.20s size=19200
+2026-05-17 17:20:13,795 | DEBUG    | stt_module           | Audio captured | size=19200
+2026-05-17 17:20:13,894 | DEBUG    | stt_module           | Whisper processing started
+2026-05-17 17:20:13,973 | DEBUG    | pipeline.models.Whisper.model | Whisper transcribing
+2026-05-17 17:20:14,454 | DEBUG    | pipeline.models.Whisper.model | Whisper transcription complete
+2026-05-17 17:20:14,526 | DEBUG    | stt_module           | Whisper result | lang=en | text_len=0
+2026-05-17 17:20:14,583 | DEBUG    | stt_module           | No speech detected
+2026-05-17 17:20:14,618 | DEBUG    | pipeline.vad         | VAD listening started
+2026-05-17 17:20:14,645 | DEBUG    | pipeline.vad         | Audio stream opened

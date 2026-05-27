@@ -1,0 +1,109 @@
+2026-05-27 15:50:47,462 | INFO     | server               | ==================================================
+2026-05-27 15:50:47,462 | INFO     | server               | STT SERVICE MODULE LOADING
+2026-05-27 15:50:47,462 | INFO     | server               | ==================================================
+2026-05-27 15:50:47,463 | INFO     | uvicorn.error        | Started server process [14818]
+2026-05-27 15:50:47,464 | INFO     | uvicorn.error        | Waiting for application startup.
+2026-05-27 15:50:47,464 | INFO     | server               | ==================================================
+2026-05-27 15:50:47,464 | INFO     | server               | STT SERVICE LIFESPAN: STARTUP PHASE
+2026-05-27 15:50:47,464 | INFO     | server               | ==================================================
+2026-05-27 15:50:47,464 | DEBUG    | server               | Phase 1: Initializing STT module...
+2026-05-27 15:50:47,464 | DEBUG    | server               | Timestamp: 2026-05-27 15:50:47
+2026-05-27 15:50:47,465 | INFO     | speech_gating_pipeline | Initializing SpeechGatingPipeline
+2026-05-27 15:50:47,465 | DEBUG    | speech_gating_pipeline | Initializing VAD (Voice Activity Detection)...
+2026-05-27 15:50:47,465 | INFO     | modules.vad.volume_detector.volume_detector | Initializing VolumeDetector | samplerate=16000Hz | threshold=0.2 | silence_dur=3.0s | block_dur=0.1s
+2026-05-27 15:50:47,465 | DEBUG    | modules.vad.volume_detector.volume_detector | VolumeDetector initialized successfully
+2026-05-27 15:50:47,768 | DEBUG    | speech_gating_pipeline | ✓ VAD initialized successfully
+2026-05-27 15:50:47,769 | DEBUG    | speech_gating_pipeline | Loading Stt speech recognition model...
+2026-05-27 15:50:47,769 | INFO     | modules.stt.models.whisper.model | Loading Whisper model | type=medium
+2026-05-27 15:50:58,150 | INFO     | modules.stt.models.whisper.model | Whisper model loaded | type=medium
+2026-05-27 15:50:58,150 | DEBUG    | speech_gating_pipeline | ✓ STT model loaded successfully
+2026-05-27 15:50:58,151 | INFO     | speech_gating_pipeline | ✓ SpeechGatingPipeline module initialized successfully
+2026-05-27 15:50:58,151 | INFO     | server               | ✓ STT instance created | init_time=10.686s
+2026-05-27 15:50:58,151 | DEBUG    | server               | STT configuration | samplerate=16000Hz | models_loaded=2
+2026-05-27 15:50:58,151 | DEBUG    | server               | Phase 2: Creating worker task...
+2026-05-27 15:50:58,151 | INFO     | server               | ✓ STT worker task created | task_id=Task-3 | creation_time=0.000s
+2026-05-27 15:50:58,151 | DEBUG    | server               | Task state | done=False | cancelled=False
+2026-05-27 15:50:58,152 | INFO     | server               | ✓ STT SERVICE READY | total_startup_time=10.688s
+2026-05-27 15:50:58,152 | DEBUG    | server               | Service status | listening=True | workers_active=1 | http_client_ready=True
+2026-05-27 15:50:58,152 | INFO     | server               | ==================================================
+2026-05-27 15:50:58,152 | INFO     | server               | SERVICE READY TO ACCEPT CONNECTIONS
+2026-05-27 15:50:58,152 | INFO     | server               | ==================================================
+2026-05-27 15:50:58,152 | INFO     | server               | 🔄 STT worker task started
+2026-05-27 15:50:58,152 | DEBUG    | server               | Worker initialization | state=ready | listening=False
+2026-05-27 15:50:58,153 | DEBUG    | server               | Worker iteration #1 | uptime_check | state=listening
+2026-05-27 15:50:58,153 | DEBUG    | server               | [Iteration #1] Waiting for speech input...
+2026-05-27 15:50:58,153 | INFO     | speech_gating_pipeline | 🎤 SpeechGatingPipeline listening started
+2026-05-27 15:50:58,153 | INFO     | uvicorn.error        | Application startup complete.
+2026-05-27 15:50:58,153 | DEBUG    | speech_gating_pipeline | Listen attempt #1
+2026-05-27 15:50:58,154 | INFO     | uvicorn.error        | Uvicorn running on http://127.0.0.1:8004 (Press CTRL+C to quit)
+2026-05-27 15:50:58,154 | DEBUG    | speech_gating_pipeline | Waiting for audio capture...
+2026-05-27 15:50:58,154 | INFO     | modules.vad.vad      | 🎤 VAD listening started
+2026-05-27 15:50:58,155 | DEBUG    | modules.vad.volume_detector.volume_detector | VolumeDetector listening started
+2026-05-27 15:50:58,155 | DEBUG    | modules.vad.volume_detector.volume_detector | Opening audio stream | samplerate=16000Hz | blocksize=1600
+2026-05-27 15:50:58,172 | DEBUG    | modules.vad.volume_detector.volume_detector | Audio stream opened successfully
+2026-05-27 15:51:43,991 | DEBUG    | modules.vad.volume_detector.volume_detector | Speech detected | volume=0.467 > threshold=0.2
+2026-05-27 15:51:44,417 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.196 <= threshold=0.2
+2026-05-27 15:51:46,232 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.194 <= threshold=0.2
+2026-05-27 15:51:46,550 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.180 <= threshold=0.2
+2026-05-27 15:51:47,937 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.188 <= threshold=0.2
+2026-05-27 15:51:48,790 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.193 <= threshold=0.2
+2026-05-27 15:51:53,163 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.181 <= threshold=0.2
+2026-05-27 15:51:53,270 | DEBUG    | modules.vad.volume_detector.volume_detector | Silence detected | volume=0.095 <= threshold=0.2
+2026-05-27 15:51:56,257 | INFO     | modules.vad.volume_detector.volume_detector | ✓ Speech ended by silence | silence_time=3.00s
+2026-05-27 15:51:56,369 | INFO     | modules.vad.volume_detector.volume_detector | ✓ Audio capture complete | duration=12.30s | samples=196800 | blocks=123
+2026-05-27 15:51:56,370 | INFO     | modules.vad.volume_detector.volume_detector | Volume statistics | min=0.000 | max=0.822 | threshold=0.2
+2026-05-27 15:51:56,370 | DEBUG    | modules.vad.volume_detector.volume_detector | Total blocks processed: 578
+2026-05-27 15:51:56,373 | INFO     | modules.vad.speach_detector.speach_detector | Calculating speech probability...
+2026-05-27 15:51:56,374 | DEBUG    | modules.vad.speach_detector.models.snakers4_silero_vad.model | Preprocessing audio of shape: (196800,)
+2026-05-27 15:51:56,374 | DEBUG    | modules.vad.speach_detector.models.snakers4_silero_vad.model | Converted audio to tensor of shape: torch.Size([196800])
+2026-05-27 15:51:56,376 | DEBUG    | modules.vad.speach_detector.models.snakers4_silero_vad.model | Normalized audio tensor of shape: torch.Size([196800])
+2026-05-27 15:51:56,376 | DEBUG    | modules.vad.speach_detector.models.snakers4_silero_vad.model | Preprocessed audio shape: torch.Size([196800])
+2026-05-27 15:51:56,377 | DEBUG    | modules.vad.speach_detector.models.snakers4_silero_vad.model | Calculating speech probability for tensor of shape: torch.Size([196800])
+2026-05-27 15:51:56,377 | DEBUG    | modules.vad.speach_detector.models.snakers4_silero_vad.model | Chunk size: 512 | Sample rate: 16000 | Sample: 32e-3ms
+2026-05-27 15:51:56,776 | DEBUG    | modules.vad.speach_detector.models.snakers4_silero_vad.model | Speech probability calculated. Max: 0.01, Min: 0.00
+2026-05-27 15:51:56,777 | INFO     | modules.vad.speach_detector.speach_detector | Speech prob calculated: 1.00
+2026-05-27 15:51:56,777 | DEBUG    | modules.vad.vad      | Speech detected
+2026-05-27 15:51:56,777 | ERROR    | speech_gating_pipeline | ✗ Unexpected error in listen (attempt #1): ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/speech_gating_pipeline.py", line 39, in listen
+    if not audio:
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2026-05-27 15:51:56,778 | ERROR    | server               | ✗ STT loop error [Iteration #1]: ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 45, in stt_worker
+    speach_info = await asyncio.to_thread(stt.listen)
+  File "/usr/lib/python3.10/asyncio/threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/speech_gating_pipeline.py", line 39, in listen
+    if not audio:
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2026-05-27 15:51:56,779 | DEBUG    | server               | Error recovery | total_errors=1 | waiting 1s before retry...
+2026-05-27 15:51:57,780 | DEBUG    | server               | Worker iteration #2 | uptime_check | state=listening
+2026-05-27 15:51:57,780 | DEBUG    | server               | [Iteration #2] Waiting for speech input...
+2026-05-27 15:51:57,781 | INFO     | speech_gating_pipeline | 🎤 SpeechGatingPipeline listening started
+2026-05-27 15:51:57,781 | DEBUG    | speech_gating_pipeline | Listen attempt #1
+2026-05-27 15:51:57,781 | DEBUG    | speech_gating_pipeline | Waiting for audio capture...
+2026-05-27 15:51:57,781 | INFO     | modules.vad.vad      | 🎤 VAD listening started
+2026-05-27 15:51:57,781 | DEBUG    | modules.vad.volume_detector.volume_detector | VolumeDetector listening started
+2026-05-27 15:51:57,781 | DEBUG    | modules.vad.volume_detector.volume_detector | Opening audio stream | samplerate=16000Hz | blocksize=1600
+2026-05-27 15:51:57,799 | DEBUG    | modules.vad.volume_detector.volume_detector | Audio stream opened successfully
+2026-05-27 15:52:46,399 | INFO     | uvicorn.error        | Shutting down
+2026-05-27 15:52:46,500 | INFO     | uvicorn.error        | Waiting for application shutdown.
+2026-05-27 15:52:46,500 | INFO     | server               | ==================================================
+2026-05-27 15:52:46,500 | INFO     | server               | STT SERVICE LIFESPAN: SHUTDOWN PHASE
+2026-05-27 15:52:46,501 | INFO     | server               | ==================================================
+2026-05-27 15:52:46,501 | INFO     | server               | 🛑 STT service shutting down...
+2026-05-27 15:52:46,501 | DEBUG    | server               | Phase 1: Stopping worker task...
+2026-05-27 15:52:46,501 | DEBUG    | server               | Worker task cancellation signal sent | task=Task-3
+2026-05-27 15:52:46,502 | DEBUG    | server               | Waiting for worker task to complete cancellation...
+2026-05-27 15:52:46,502 | INFO     | server               | 🛑 STT worker received cancellation signal
+2026-05-27 15:52:46,502 | DEBUG    | server               | Worker stats at cancellation | iteration=#2 | total_audio=0 | errors=1
+2026-05-27 15:52:46,502 | INFO     | server               | STT worker task terminated gracefully | iterations=2 | audio_processed=0 | errors=1
+2026-05-27 15:52:46,503 | DEBUG    | server               | Phase 2: Closing HTTP client...
+2026-05-27 15:52:46,520 | DEBUG    | server               | ✓ HTTP client closed | close_time=0.017s
+2026-05-27 15:52:46,520 | INFO     | server               | ✓ STT SERVICE STOPPED | shutdown_time=0.020s
+2026-05-27 15:52:46,521 | INFO     | server               | ==================================================
+2026-05-27 15:52:46,521 | INFO     | uvicorn.error        | Application shutdown complete.
+2026-05-27 15:52:46,521 | INFO     | uvicorn.error        | Finished server process [14818]

@@ -1,0 +1,105 @@
+2026-05-27 14:02:48,013 | INFO     | server               | ==================================================
+2026-05-27 14:02:48,014 | INFO     | server               | STT SERVICE MODULE LOADING
+2026-05-27 14:02:48,014 | INFO     | server               | ==================================================
+2026-05-27 14:02:48,015 | INFO     | uvicorn.error        | Started server process [6970]
+2026-05-27 14:02:48,015 | INFO     | uvicorn.error        | Waiting for application startup.
+2026-05-27 14:02:48,015 | INFO     | server               | ==================================================
+2026-05-27 14:02:48,016 | INFO     | server               | STT SERVICE LIFESPAN: STARTUP PHASE
+2026-05-27 14:02:48,016 | INFO     | server               | ==================================================
+2026-05-27 14:02:48,016 | DEBUG    | server               | Phase 1: Initializing STT module...
+2026-05-27 14:02:48,016 | DEBUG    | server               | Timestamp: 2026-05-27 14:02:48
+2026-05-27 14:02:48,016 | INFO     | speech_gating_pipeline | Initializing SpeechGatingPipeline
+2026-05-27 14:02:48,016 | DEBUG    | speech_gating_pipeline | Initializing VAD (Voice Activity Detection)...
+2026-05-27 14:02:48,016 | INFO     | modules.vad.volume_detector.volume_detector | Initializing VolumeDetector | samplerate=16000Hz | threshold=0.2 | silence_dur=3.0s | block_dur=0.1s
+2026-05-27 14:02:48,017 | DEBUG    | modules.vad.volume_detector.volume_detector | VolumeDetector initialized successfully
+2026-05-27 14:02:56,306 | ERROR    | speech_gating_pipeline | ✗ SpeechGatingPipeline init error: ModuleNotFoundError: No module named 'torchaudio'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/speech_gating_pipeline.py", line 14, in __init__
+    self.vad = Vad()
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/vad.py", line 15, in __init__
+    self.speech_detector = SpeechDetector(sample_rate)
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/speach_detector.py", line 14, in __init__
+    self.model = SileroVad(sample_rate)
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/model.py", line 13, in __init__
+    self.model, self.utils = torch.hub.load(
+  File "/mnt/windows/Programs/ProgramingProjects/Python/venvs/ml310/lib/python3.10/site-packages/torch/hub.py", line 656, in load
+    model = _load_local(repo_or_dir, model, *args, **kwargs)
+  File "/mnt/windows/Programs/ProgramingProjects/Python/venvs/ml310/lib/python3.10/site-packages/torch/hub.py", line 686, in _load_local
+    hub_module = _import_module(MODULE_HUBCONF, hubconf_path)
+  File "/mnt/windows/Programs/ProgramingProjects/Python/venvs/ml310/lib/python3.10/site-packages/torch/hub.py", line 115, in _import_module
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/snakers4_silero-vad_master/hubconf.py", line 6, in <module>
+    from silero_vad.utils_vad import (init_jit_model,
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/snakers4_silero-vad_master/src/silero_vad/__init__.py", line 7, in <module>
+    from silero_vad.model import load_silero_vad
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/snakers4_silero-vad_master/src/silero_vad/model.py", line 1, in <module>
+    from .utils_vad import init_jit_model, OnnxWrapper
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/snakers4_silero-vad_master/src/silero_vad/utils_vad.py", line 2, in <module>
+    import torchaudio
+ModuleNotFoundError: No module named 'torchaudio'
+2026-05-27 14:02:56,309 | ERROR    | server               | ✗ STT lifespan error: ModuleNotFoundError: No module named 'torchaudio'
+Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 93, in lifespan
+    stt = SpeechGatingPipeline()
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/speech_gating_pipeline.py", line 14, in __init__
+    self.vad = Vad()
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/vad.py", line 15, in __init__
+    self.speech_detector = SpeechDetector(sample_rate)
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/speach_detector.py", line 14, in __init__
+    self.model = SileroVad(sample_rate)
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/model.py", line 13, in __init__
+    self.model, self.utils = torch.hub.load(
+  File "/mnt/windows/Programs/ProgramingProjects/Python/venvs/ml310/lib/python3.10/site-packages/torch/hub.py", line 656, in load
+    model = _load_local(repo_or_dir, model, *args, **kwargs)
+  File "/mnt/windows/Programs/ProgramingProjects/Python/venvs/ml310/lib/python3.10/site-packages/torch/hub.py", line 686, in _load_local
+    hub_module = _import_module(MODULE_HUBCONF, hubconf_path)
+  File "/mnt/windows/Programs/ProgramingProjects/Python/venvs/ml310/lib/python3.10/site-packages/torch/hub.py", line 115, in _import_module
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/snakers4_silero-vad_master/hubconf.py", line 6, in <module>
+    from silero_vad.utils_vad import (init_jit_model,
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/snakers4_silero-vad_master/src/silero_vad/__init__.py", line 7, in <module>
+    from silero_vad.model import load_silero_vad
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/snakers4_silero-vad_master/src/silero_vad/model.py", line 1, in <module>
+    from .utils_vad import init_jit_model, OnnxWrapper
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/snakers4_silero-vad_master/src/silero_vad/utils_vad.py", line 2, in <module>
+    import torchaudio
+ModuleNotFoundError: No module named 'torchaudio'
+2026-05-27 14:02:56,311 | DEBUG    | server               | Error occurred during: startup
+2026-05-27 14:02:56,314 | ERROR    | uvicorn.error        | Traceback (most recent call last):
+  File "/mnt/windows/Programs/ProgramingProjects/Python/venvs/ml310/lib/python3.10/site-packages/starlette/routing.py", line 694, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/usr/lib/python3.10/contextlib.py", line 199, in __aenter__
+    return await anext(self.gen)
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/server.py", line 93, in lifespan
+    stt = SpeechGatingPipeline()
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/speech_gating_pipeline.py", line 14, in __init__
+    self.vad = Vad()
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/vad.py", line 15, in __init__
+    self.speech_detector = SpeechDetector(sample_rate)
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/speach_detector.py", line 14, in __init__
+    self.model = SileroVad(sample_rate)
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/model.py", line 13, in __init__
+    self.model, self.utils = torch.hub.load(
+  File "/mnt/windows/Programs/ProgramingProjects/Python/venvs/ml310/lib/python3.10/site-packages/torch/hub.py", line 656, in load
+    model = _load_local(repo_or_dir, model, *args, **kwargs)
+  File "/mnt/windows/Programs/ProgramingProjects/Python/venvs/ml310/lib/python3.10/site-packages/torch/hub.py", line 686, in _load_local
+    hub_module = _import_module(MODULE_HUBCONF, hubconf_path)
+  File "/mnt/windows/Programs/ProgramingProjects/Python/venvs/ml310/lib/python3.10/site-packages/torch/hub.py", line 115, in _import_module
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/snakers4_silero-vad_master/hubconf.py", line 6, in <module>
+    from silero_vad.utils_vad import (init_jit_model,
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/snakers4_silero-vad_master/src/silero_vad/__init__.py", line 7, in <module>
+    from silero_vad.model import load_silero_vad
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/snakers4_silero-vad_master/src/silero_vad/model.py", line 1, in <module>
+    from .utils_vad import init_jit_model, OnnxWrapper
+  File "/mnt/windows/Programs/ProgramingProjects/Python/projects/AGAT_System/speech_gating_pipeline/modules/vad/speach_detector/models/snakers4_silero_vad/snakers4_silero-vad_master/src/silero_vad/utils_vad.py", line 2, in <module>
+    import torchaudio
+ModuleNotFoundError: No module named 'torchaudio'
+
+2026-05-27 14:02:56,314 | ERROR    | uvicorn.error        | Application startup failed. Exiting.

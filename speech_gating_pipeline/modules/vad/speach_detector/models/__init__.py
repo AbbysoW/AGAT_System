@@ -1,0 +1,1 @@
+from .snakers4_silero_vad.model import Model as SileroVad
