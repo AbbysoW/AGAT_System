@@ -5,6 +5,9 @@ from datetime import datetime
 from modules import Filter, Dispatcher, PreProcess
 from client import send_request
 
+from utils.curent_data_utils import load_data, update_data
+from utils.dialodue_history import make_dialogue_history, add_dialogue_entry
+
 logger = logging.getLogger(__name__)
 
 class Core:
@@ -28,6 +31,7 @@ class Core:
         ],
         'input': {
             'stt': {
+                'timestamp': 0,
                 'last_update': 0,
                 'importance': False,
                 'data':{
@@ -37,6 +41,7 @@ class Core:
                 }
             },
             'cv': {
+                'timestamp': 0,
                 'last_update': 0,
                 'importance': False,
                 'data':{
@@ -45,6 +50,7 @@ class Core:
                 }
             },
             'sys': {
+                'timestamp': 0,
                 'last_update': 0,
                 'importance': False,
                 'data': {
@@ -59,6 +65,12 @@ class Core:
     def __init__(self):
         logger.info("=" * 50)
         logger.info("Core module initialization started")
+        try:
+            self.data = load_data()
+            logger.info("Current data loaded successfully.")
+        except FileNotFoundError:
+            logger.warning("Current data file not found. Initializing with default values.")
+
         try:
             logger.debug("Initializing Filter module...")
             self.filter = Filter()
@@ -83,25 +95,28 @@ class Core:
         logger.info(f"STT input received | speaker={speaker} | language={language} | text_len={len(text)}")
         logger.debug(f"STT input text: '{text}'")
         
-        timestamp = datetime.now().timestamp()
-        self.data['input']['stt']['last_update'] = timestamp
+        corent_timestamp = datetime.now().timestamp()
+        last_timestamp = self.data['input']['stt']['timestamp']
+        self.data['input']['stt']['timestamp'] = corent_timestamp
+        self.data['input']['stt']['last_update'] = corent_timestamp - last_timestamp
         self.data['input']['stt']['data'] = {
             'text': text,
             'language': language,
             'speaker': speaker
         }
-        logger.debug(f"STT data updated | timestamp={timestamp} | context_size={len(self.data['context'])}")
+        logger.debug(f"STT data updated | timestamp={corent_timestamp} | context_size={len(self.data['context'])}")
 
         # filter
-        filter_des = self._stt_filter(self.data['input'])
-        if filter_des:
-            if not self.is_processing:
-                self.is_processing = True
+        if not self.is_processing:
+            self.is_processing = True
+            filter_des = self._stt_filter(self.data['input'])
+            if filter_des:
                 self._main_pipeline()
             else:
-                logger.debug(f"Previous processing still in progress")
+                logger.debug(f"STT Input rejected by filter")
+            self.is_processing = False
         else:
-            logger.debug(f"STT Input rejected by filter")
+            logger.debug(f"Previous processing still in progress")
 
 
     def _main_pipeline(self): # Checking new input importance 
@@ -128,12 +143,13 @@ class Core:
                     model_answer = self._send_request_to_llm(final_input, self.data['context'])
                     if model_answer:
                         logger.info(f"✓ Chat response received | response_len={len(str(model_answer))}")
-                        logger.debug(f"Model answer: {model_answer[:100]}..." if len(str(model_answer)) > 100 else f"Model answer: {model_answer}")
+                        logger.debug(f"Model answer: {model_answer}")
                         self._update_context(final_context, model_answer)
                         logger.info(f"Context updated | new_context_size={len(self.data['context'])}")
                     else:
                         logger.warning("⚠ Chat service returned None or empty response")
-                        
+                    self._update_data(self.data)
+
                 except Exception as e:
                     logger.error(f"✗ Chat request error: {type(e).__name__}: {e}", exc_info=True)
             else:
@@ -141,8 +157,6 @@ class Core:
                 logger.debug(f"Filter importance: stt={self.data['input']['stt']['importance']} | cv={self.data['input']['cv']['importance']} | sys={self.data['input']['sys']['importance']}")
         except Exception as e:
             logger.error(f"✗ Input check error: {type(e).__name__}: {e}", exc_info=True)
-
-        self.is_processing = False
 
     def _update_context(self, last_context: dict, model_answer: str):
         logger.debug("Updating context with model response")
@@ -250,8 +264,31 @@ class Core:
         full_context = context + [input_data]
         logger.debug(f"Full context prepared | total_len={len(full_context)}")
         return full_context
+    
+    # --- Utils ---
+    # -- Update Data --
+    def _update_data(self, data: dict):
+        try:
+            try:
+                update_data(data)
+                logger.debug(f"Current data updated successfully")
+            except FileNotFoundError:
+                logger.error("✗ Current data file not found error occurred while updating data")
 
-
+            try:
+                last_context = data['context'][-1]
+                add_dialogue_entry(
+                    user=last_context.get('/user', ''),
+                    sys=last_context.get('/sys', ''),
+                    cv=last_context.get('/cv', ''),
+                    model=last_context.get('/model', ''),
+                    hint=last_context.get('/hint', '')
+                )
+                logger.debug(f"Dialog data updated successfully")
+            except FileNotFoundError:
+                logger.error("✗ Dialog file not found error occurred while updating data")
+        except Exception as e:
+            logger.error(f"✗ Error occurred while updating data: {type(e).__name__}: {e}", exc_info=True)
 
 
 

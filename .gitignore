@@ -10,15 +10,18 @@ __pycache__/
 **/*.jit
 **/*.bin
 **/*.npy
+**/*.TAG
 
 **/models--*/
 
 **/snakers4_silero-vad_*/
 
+core/data/history/dialogue_history/*
+core/data/current/*
+
 CACHEDIR.TAG
 .env
 main.py
 temp.py
-tenp.py
 test.py
-utils
+/utils/
