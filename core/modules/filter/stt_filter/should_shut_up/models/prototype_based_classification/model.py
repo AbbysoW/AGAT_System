@@ -7,7 +7,7 @@ from .embaddings_model.model import Model as EmbaddingsModel
 
 
 class Model:
-    bias = -0.1
+    bias = -0.15
 
     def __init__(self):
         self.pos_prototypes = []
