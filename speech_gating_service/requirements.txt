@@ -1,0 +1,12 @@
+fastapi==0.135.1
+httpx==0.28.1
+pydantic==2.12.5
+python-dotenv==1.2.2
+uvicorn==0.41.0
+openai-whisper==20250625
+numpy==2.2.6
+sounddevice==0.5.5
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.10.0+cpu
+torchaudio==2.11.0+cpu
+packaging==26.0

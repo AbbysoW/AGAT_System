@@ -1,0 +1,21 @@
+
+
+services:
+  speech_gating_service:
+    build: .
+
+    container_name: speech_gating_service
+
+    ports:
+      - "8004:8004"
+    devices:
+      - /dev/snd:/dev/snd
+    volumes:
+      - .:/app
+      - /run/user/1000/pulse:/run/user/1000/pulse
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PULSE_SERVER=unix:/run/user/1000/pulse/native
+      - AUDIO_BACKEND=pulse
+    group_add:
+      - audio

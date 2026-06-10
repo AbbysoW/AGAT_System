@@ -1,0 +1,7 @@
+modules/filter/stt_filter/imp_model/models/
+modules/filter/stt_filter/should_shut_up/models/
+
+__pycache__
+*.pyc
+*.pyo
+.pyc

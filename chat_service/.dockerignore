@@ -1,0 +1,7 @@
+own_llm_pipelene/
+side_llm_pipeline/models/
+
+__pycache__
+*.pyc
+*.pyo
+.pyc

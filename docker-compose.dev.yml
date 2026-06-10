@@ -1,0 +1,62 @@
+
+services:
+
+  core_service:
+    build: ./core_service
+
+    container_name: core_service
+
+    environment:
+     - PYTHONDONTWRITEBYTECODE=1
+
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./core_service:/app
+ 
+
+  chat_service:
+    build: ./chat_service
+
+    container_name: chat_service
+
+    environment:
+     - PYTHONDONTWRITEBYTECODE=1
+
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./chat_service:/app
+
+  searching_service:
+    build: ./searching_service
+
+    container_name: searching_service
+
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - NEO4J_URI=bolt://neo4j:7687
+
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./searching_service:/app
+
+    depends_on:
+      - neo4j
+
+
+  neo4j:
+    image: neo4j:5.26
+
+    container_name: neo4j
+
+    environment:
+      - NEO4J_AUTH=neo4j/12345678
+      
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - /home/abbysow/neo4j/data:/data
+      - /home/abbysow/neo4j/logs:/logs

@@ -1,0 +1,9 @@
+fastapi==0.135.1
+httpx==0.28.1
+uvicorn==0.41.0
+pydantic==2.12.5
+transformers==5.8.0
+sentence-transformers==5.5.1
+--extra-index-url https://download.pytorch.org/whl/cu130
+torch==2.10.0+cu130
+neo4j==6.2.0

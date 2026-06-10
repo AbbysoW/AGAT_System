@@ -1,0 +1,20 @@
+
+
+services:
+  speech_gating_service:
+    build: .
+
+    container_name: speech_gating_service
+    
+    ports:
+      - "8004:8004"
+    volumes:
+      - /mnt/windows/Programs/AGAT_System/SpeechGating/VAD/Models:/app/modules/vad/speach_detector/models
+      - /mnt/windows/Programs/AGAT_System/SpeechGating/STT/Models:/app/modules/stt/models
+      - /mnt/windows/Programs/AGAT_System/SpeechGating/Logs:/app/logger/logs
+      - /run/user/1000/pulse:/run/user/1000/pulse
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PULSE_SERVER=unix:/run/user/1000/pulse/native
+    group_add:
+      - audio
